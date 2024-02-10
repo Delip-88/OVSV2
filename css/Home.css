@@ -1,0 +1,528 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+ }
+
+ body {
+    background-color: #E9F1FA;
+    scroll-behavior: smooth;
+
+ }
+
+
+ .container {
+    width: 100%;
+    height: 100vh;
+    /* background-image: url("../img/helloworld.jpg"); */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+ }
+
+ header {
+    width: 100%;
+    height: 14%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px;
+    background-color: #00ABE4;
+    color: white;
+ }
+
+
+ figure {
+    width: 70px;
+    aspect-ratio: 1/1;
+    margin-left: 2%;
+
+ }
+
+ figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+ }
+
+ nav {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: #85909c;
+ }
+
+ ul {
+    flex: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #85909c;
+ }
+
+ .main {
+    flex: 80%;
+    padding: 20px 50px;
+    min-height: 100vh;
+
+    background-color: #E9F1FA;
+    position: relative;
+ }
+
+ li {
+    list-style-type: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgb(59, 58, 58);
+ }
+
+ .active {
+    /* background-color: rgba(128, 0, 128, 0.726); */
+    border-left: 4px solid purple;
+    color: purple;
+ }
+
+ ul li a {
+    padding: 20px;
+    line-height: 30px;
+    display: block;
+    font-size: large;
+    text-decoration: none;
+    color: white;
+ }
+
+ ul span {
+    color: purple;
+ }
+
+ .manage {
+    color: rgb(163, 154, 154);
+    background-color: rgb(61, 51, 51);
+    padding: 10px 0;
+ }
+
+ .welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+
+ }
+
+ .welcome a {
+    text-decoration: none;
+    background-color: transparent;
+    padding: 3px 5px;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid white;
+
+ }
+
+ table {
+    border-collapse: collapse;
+    width: 100%;
+
+ }
+
+ .table-container {
+    overflow-x: auto;
+ }
+
+ th,
+ td {
+    border: 1px solid gray;
+    padding: 8px;
+    text-align: left;
+ }
+
+ th {
+    background-color: #b1bfcf;
+ }
+
+ tr:nth-of-type(even) {
+    background-color: #b1bfcf67;
+ }
+
+
+ tr td:first-child {
+    text-align: center;
+ }
+
+ tr td:nth-child(2) {
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+ }
+
+ #user {
+    color: purple;
+ }
+
+ .user-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+ }
+
+
+
+
+ form button,
+ .more {
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: transform 30ms ease;
+ }
+
+ .btn_more {
+    position: relative;
+    z-index: 10;
+ }
+
+ .accept,
+ .more {
+    padding: 7 11px;
+    border-radius: 6px;
+    background-color: rgb(23, 173, 23);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    transition: all 100ms ease;
+
+ }
+
+ .reject {
+    padding: 7 11px;
+    border-radius: 6px;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 100ms ease;
+ }
+
+ .reject:hover {
+    background-color: rgb(202, 19, 19);
+
+ }
+
+ .accept:hover,
+ .more:hover {
+    background-color: rgb(25, 129, 25);
+
+ }
+
+
+
+ .addMore {
+    width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #b8b8b8ce;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 4px rgb(105, 88, 88);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+
+ }
+
+ .info {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    gap: 15px;
+    justify-content: space-around;
+ }
+
+ .card {
+    background-color: rgba(143, 140, 140, 0.356);
+
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 15px 30px;
+    gap: 15px;
+    border-radius: 10px;
+    width: 300px;
+ }
+
+ .userImage {
+
+    margin: auto;
+    width: 100px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+ }
+
+ .userImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    filter: drop-shadow(4px 4px 15px white);
+
+ }
+
+ .label {
+    display: inline;
+    font-weight: bold;
+
+ }
+
+
+ #addC {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+
+ }
+
+ #addC input {
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+ }
+
+ .pos input {
+    margin-bottom: 10px;
+    padding: 3px;
+    border-radius: 5px;
+    outline: none;
+ }
+
+ hr {
+    margin: 5px;
+ }
+
+ textarea {
+    border-radius: 5px;
+ }
+
+
+ #btnC {
+    background-color: rgba(47, 197, 47, 0.884);
+    color: white;
+ }
+
+ textarea {
+    padding-left: 15px;
+ }
+
+ /* Style for the modal container */
+ .visible {
+    display: block;
+ }
+
+ .cancel {
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 15px;
+    box-shadow: 2px 3px 4px rgb(105, 88, 88);
+    cursor: pointer;
+    transition: transform 100ms ease;
+ }
+
+ .more {
+    position: absolute;
+    right: 5%;
+    top: 2%;
+ }
+
+ .namewidth {
+    width: 150px;
+ }
+
+ #title {
+    text-align: center;
+
+ }
+
+ #candidate-card {
+    display: flex;
+    flex-direction: column;
+ }
+
+ select {
+    padding: 4px 20px;
+    text-transform: capitalize;
+    border-radius: 5px;
+ }
+
+ .info button {
+    margin: auto;
+ }
+
+ .elections {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+ }
+
+
+
+ .eCard {
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+ }
+
+ .modifybtns {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+ }
+
+ .edit {
+    background-color: #00ABE4;
+    padding: 7 14px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    transition: all 100ms ease;
+ }
+
+ .edit:hover {
+    background-color: #0483addc;
+
+ }
+
+ .main-container {
+    padding: 10px;
+
+ }
+
+ .currentElections {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 10px;
+ }
+
+ .currentElectionBox {
+    border-radius: 10px;
+
+    background-color: #b1bfcf;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+ }
+
+ .overview {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+ }
+
+ .candidateCardCover {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+ }
+
+ .candidateCard {
+    background-color: rgba(123, 138, 160, 0.856);
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 10px;
+ }
+
+ .user-image {
+    width: 100px;
+    height: 100px;
+    align-self: center;
+ }
+
+ .user-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+ }
+
+ .ongoingElectionName {
+    color: #0004e6;
+ }
+
+ .inactive {
+    background-color: rgba(255, 255, 0, 0.87);
+ }
+
+ .Ongoing {
+    background-color: rgba(26, 206, 26, 0.733);
+ }
+
+ .closed {
+    background-color: rgba(255, 0, 0, 0.795);
+ }
+
+
+
+ @media only screen and (max-width:650px) {
+    .main {
+       padding: 10px 5px;
+       font-size: small;
+    }
+
+    nav {
+       flex-direction: column;
+    }
+
+    ul {
+       width: 100%;
+    }
+
+    #title {
+       font-size: 20px;
+    }
+
+
+    .welcome {
+       font-size: 18px;
+    }
+    .accept,.reject{
+      padding: 3px 7px;
+      font-size: small;
+      margin-bottom: 5px   ;
+    }
+ }
+
+ @media only screen and (max-width:600px) {
+    header {
+       flex-direction: column;
+       height: auto;
+       gap: 5px;
+    }
+ }
