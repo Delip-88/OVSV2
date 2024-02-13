@@ -1,54 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-    <link rel="stylesheet" href="../css/register.css" />
-  </head>
-  <body>
-    <div class="container">
-      <form
-        action="../api/register.php"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        <h3>Registration</h3>
-        <label for="name">Full Name</label>
-        <input type="text" name="name" id="name" required />
-        <label for="number">Phone Number</label>
-        <input
-          type="number"
-          name="number"
-          id="number"
-          pattern="\d{10}"
-          maxlength="10"
-          title="Please enter a 10-digit number"
-          required
-        />
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" />
-        <label for="cpassword">Password</label>
-        <input type="password" name="cpassword" id="cpassword" />
-        <label for="email">E-mail</label>
-        <input type="email" name="email" id="email" required />
-        <label for="address">Address</label>
-        <input type="text" name="address" id="address" required />
-        <label for="image">Your Image</label>
-        <input
-          type="file"
-          name="image"
-          id="image"
-          class="uploadImage"
-          accept=".jpg, .jpeg, .png"
-          required
-        />
-        <select name="role" id="role" name="role" requiredx>
-          <option value="user">user</option>
-        </select>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+  <link rel="stylesheet" href="../css/register.css" />
+</head>
+
+<body>
+  <div class="container">
+    <form action="../api/register.php" id="form" method="post" enctype="multipart/form-data">
+      <h3>Registration</h3>
+      <small id="error"></small>
+      <label for="name">Full Name</label>
+      <input type="text" name="name" id="name" required />
+      <label for="number">Phone Number</label>
+      <input type="number" name="number" id="number" required />
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" />
+      <label for="cpassword">Confirm Password</label>
+      <input type="password" name="cpassword" id="cpassword" />
+      <label for="email">E-mail</label>
+      <input type="email" name="email" id="email" required />
+      <label for="address">Address</label>
+      <input type="text" name="address" id="address" required />
+      <label for="image">Your Image</label>
+      <input type="file" name="image" id="image" class="uploadImage" accept=".jpg, .jpeg, .png" required />
+      <button type="submit">Submit</button>
+    </form>
+    <script defer src="js/registerValidation.js"></script>
+  </div>
+</body>
+
 </html>

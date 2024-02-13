@@ -107,7 +107,6 @@ $userdata = $_SESSION['userdata'];
       </div>
     </nav>
   </div>
-  <script src="script.js"></script>
 </body>
 
 </html>

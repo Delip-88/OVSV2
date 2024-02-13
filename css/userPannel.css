@@ -8,6 +8,8 @@
  body {
    width: 100%;
    height: 100vh;
+   position: relative;
+   overflow-x: hidden;
  }
 
  header {
@@ -42,6 +44,9 @@
 
  }
 
+ #logout:hover{
+  background-color: rgb(12, 95, 128);
+}
  .welcome a {
    text-decoration: none;
    background-color: transparent;
@@ -70,11 +75,27 @@
    text-transform: capitalize;
  }
 
+#adC{
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+}
 
+#adC input, .pop_box2 input{
+  outline: none;
+  border: none;
+  padding: 6px;
+  border-radius: 5px;
+  width: 100%;
 
+}
+
+.btns{
+  align-self: center;
+}
  .container {
    width: 100%;
-   height: 100%;
    display: grid;
    grid-template-columns: 1fr 2fr;
    /* gap: 20px; */
@@ -183,7 +204,7 @@
  }
 
  .card {
-   min-width: 210px;
+   min-width: fit-content;
    height: 250px;
    display: flex;
    flex-direction: column;
@@ -216,6 +237,34 @@
    gap: 10px;
  }
 
+.card{
+  position: relative;
+  min-width: 340px;
+}
+
+.fa-regular{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.fa-solid{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+#error{
+  display: none;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid red;
+
+}
  .card .img {
    width: 100px;
    aspect-ratio: 1/1;
@@ -242,6 +291,53 @@
    margin-top: 10px;
 
  }
+
+ .pop_box, .pop_box2 {
+  width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 5px;
+  background-color: #b8b8b8ce;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 4px rgb(105, 88, 88);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  border: 1px solid grey;
+}
+
+.pop_box input{
+  margin: 10px auto;
+}
+.pop_box2{
+  gap: 10px;
+
+}
+.visible {
+  display: block;
+}
+#btnC {
+  
+  background-color: rgba(47, 197, 47, 0.884);
+  color: white;
+}
+
+.cancel, #btnC {
+  outline: none;
+  border: none;
+  padding: 7px 12px;
+  margin-left: 15px;
+  border-radius: 6px;
+
+  cursor: pointer;
+  transition: transform 100ms ease;
+}
+
 
  @media only screen and (max-width:800px) {
    .container {

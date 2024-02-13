@@ -36,7 +36,7 @@ function updateElectionStatus() {
     // Make an AJAX request to update the database
     $.ajax({
       type: "POST",
-      url: "../../api/updateElectionStatus.php",
+      url: "../api/updateElectionStatus.php",
       data: {
         electionTitle: electionTitle,
         newStatus: newStatus,
