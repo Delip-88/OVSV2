@@ -1,37 +1,61 @@
 const error = document.getElementById("error");
-const newPsw = document.getElementById("password");
-const rePsw = document.getElementById("cpassword");
+const infoform = document.getElementById("adC");
+const num = document.getElementById("number");
+const curPsw = document.getElementById("password");
+const pError = document.getElementById("passwordError");
+const newPsw = document.getElementById("newPassword");
+const rePsw = document.getElementById("rePassword");
 const pswform = document.getElementById("form");
 
+// password  Change validation
 pswform.addEventListener("submit", (e) => {
   let messages = [];
 
-  if (newPsw.value.length < 8) {
-    messages.push("password lenght should be at least 8 digit");
+  // Password length validation
+  if (
+    newPsw.value.length < 8 ||
+    rePsw.value.length < 8 ||
+    curPsw.value.length < 8
+  ) {
+    messages.push("Password length should be at least 8 characters");
   }
+
+  // Password match validation
   if (newPsw.value !== rePsw.value) {
-    messages.push("NewPassword and Confirm password doesnt match");
+    messages.push("New Password and Confirm password do not match");
   }
+
+  // Display password error messages
   if (messages.length > 0) {
     e.preventDefault();
-    error.innerText = messages.join(", ");
+    pError.style.display = "block";
+    pError.innerText = messages.join(", ");
+  } else {
+    pError.style.display = "none"; // Reset error display
   }
 });
 
-const infoform = document.getElementById("adC");
-const num = document.getElementById("number");
+// Info Form validation
 infoform.addEventListener("submit", (e) => {
   let messages = [];
+
+  // Number length validation
   if (num.value.length !== 10) {
     messages.push("Number must be 10 digits");
   }
+
+  // First digit of the number validation
   let pattern = /^9/;
-  if (pattern.test(num.value) == false) {
-    messages.push("First letter of num should be 9");
+  if (!pattern.test(num.value)) {
+    messages.push("First digit of the number should be 9");
   }
+
+  // Display number error messages
   if (messages.length > 0) {
     e.preventDefault();
     error.style.display = "block";
     error.innerText = messages.join(", ");
+  } else {
+    error.style.display = "none"; // Reset error display
   }
 });

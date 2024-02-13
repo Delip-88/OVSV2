@@ -1,5 +1,5 @@
 <?php
-$timeout = 24 * 60 * 60; //24 hours in seconds
+$timeout = 30 * 24 * 60 * 60;
 session_set_cookie_params($timeout);
 session_start();
 if ($_SESSION['userdata']['Role'] !== 'user') {
@@ -171,7 +171,8 @@ $userdata = $_SESSION['userdata'];
     <div class="pop_box2" id="">
         <h2>Edit</h2>
         <hr>
-        <form action="../api/updateDetails.php" method="post" class="pos" id="form">
+        <small id='passwordError'></small>
+        <form action="../api/passwordChange.php" method="post" class="pos" id="form">
             <br>
             <label for="password">Current Pasword:</label>
             <input type="text" name="password" id="password" required>
@@ -186,7 +187,8 @@ $userdata = $_SESSION['userdata'];
             <br>
             <br>
             <div class="btns">
-                <input type="hidden" name="uid" value="<?php echo $userdata['Id'] ?>">
+                <input type="hidden" name="UID" value="<?php echo $userdata['Id']; ?>" <input type="hidden" name="uid"
+                    value="<?php echo $userdata['Id'] ?>">
                 <button type="submit" id="btnC">Apply Changes</button>
                 <button type="reset" class="cancel btn_cancel2">cancel</button>
             </div>
@@ -194,7 +196,9 @@ $userdata = $_SESSION['userdata'];
     </div>
     <script src="js/script.js"></script>
     <script src="js/userScript.js"></script>
-    <script defer src="js/passwordValidation.js"></script>
+    <script src="js/passwordValidation.js"></script>
+    <script src="js/changepasswordValidation.js"></script>
+
 </body>
 
 </html>
