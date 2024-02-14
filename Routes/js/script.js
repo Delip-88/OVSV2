@@ -12,3 +12,18 @@ function closeModal() {
 
 btnShow.addEventListener("click", openModal);
 btnHide.addEventListener("click", closeModal);
+
+// Pop up box js 2
+const btnShow2 = document.querySelector(".edit");
+const btnHide2 = document.querySelector(".btn_cancel2");
+const popUpBox2 = document.querySelector(".pop_box2");
+
+function openModal2() {
+  popUpBox2.classList.toggle("visible");
+}
+function closeModal2() {
+  popUpBox2.classList.remove("visible");
+}
+
+btnShow.addEventListener("click", openModal2);
+btnHide.addEventListener("click", closeModal2);

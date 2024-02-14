@@ -187,8 +187,7 @@ $userdata = $_SESSION['userdata'];
             <br>
             <br>
             <div class="btns">
-                <input type="hidden" name="UID" value="<?php echo $userdata['Id']; ?>" <input type="hidden" name="uid"
-                    value="<?php echo $userdata['Id'] ?>">
+                <input type="hidden" name="UID" value="<?php echo $userdata['Id']; ?>">
                 <button type="submit" id="btnC">Apply Changes</button>
                 <button type="reset" class="cancel btn_cancel2">cancel</button>
             </div>

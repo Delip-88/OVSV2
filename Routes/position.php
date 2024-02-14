@@ -49,24 +49,21 @@ if (!$result) {
                         $electionId = $row['Id'];
                         $electionTitle = $row['Title'];
                         $electionTitles[] = $electionTitle; // Add each election title to the array
-                    
                         echo "<div class='eCard' data-title='{$row['Title']}'> ";
                         echo "<h2>Election Title : {$row['Title']} </h2>";
-                        echo "<p >Starting Date: <span class='stDate'>{$row['StartDate']} </span></p>";
-                        echo "<p >Ending Date: <span class='endDate'>{$row['EndDate']} </span></p>";
+                        echo "<p>Starting Date: <span class='stDate'>{$row['StartDate']} </span></p>";
+                        echo "<p>Ending Date: <span class='endDate'>{$row['EndDate']} </span></p>";
                         echo "<p> Status : <span class='status'></span></p>";
-                        echo "
-            <form action='../api/process_action.php' method='post' >
-            <input type='hidden' name='user_id' value='{$row['Id']}'>
-            <input type='hidden' name='Title' value='{$row['Title']}'>
-            <input type='hidden' name='eId' value='$electionId'>
-            <input type='hidden' name='originating_page' value='election'>
-            <div class='modifybtns'>
-            <button name='edit' class='edit'> Edit </button>
-            <button type='submit' name='reject' class='reject delete'>Delete</button>
-            </div>
-            </form>
-            ";
+                        echo "  <form action='../api/process_action.php' method='post' >
+                                <input type='hidden' name='user_id' value='{$row['Id']}'>
+                                <input type='hidden' name='Title' value='{$row['Title']}'>
+                                <input type='hidden' name='eId' value='$electionId'>
+                                <input type='hidden' name='originating_page' value='election'>
+                                <div class='modifybtns'>
+                                <button type='submit' name='reject' class='reject delete'>Delete</button>
+                                </div>
+                                </form> ";
+                        echo " <button name='edit' class='edit'> Edit </button> ";
                         echo "</div>";
                     }
                     ?>
@@ -76,7 +73,30 @@ if (!$result) {
 
         </nav>
     </div>
-    <div class="addMore pop_box" id="modal">
+
+    <!-- Election Edit POPUP_BOX -->
+    <div class="pop_box2" id="editPopup">
+        <h2>Edit</h2>
+        <hr>
+        <form id="editForm" action="../api/editElectionDetails.php" method="post" class="pos">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="editTitle" value="">
+            <br>
+            <label for="stDate">Starting Date:</label>
+            <input type="datetime-local" name="stDate" id="editStDate" value="">
+            <br>
+            <label for="endDate">Ending Date:</label>
+            <input type="datetime-local" name="endDate" id="editEndDate" value="">
+            <div class="btns">
+                <input type="hidden" name="electionId" id="editElectionId" value="">
+                <button type="submit" id="applyChangesBtn">Apply Changes</button>
+                <button type="button" class="cancel btn_cancel2" onclick="closeEditPopup()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Create Election POPUP-BOX -->
+    <div class="addMore pop_box">
         <h2>Create Election</h2>
         <hr>
         <form action="../api/electionForm.php" method="post" class="pos" id="adC">
@@ -99,12 +119,15 @@ if (!$result) {
     </div>
 
 
+
+
     <!-- Output the array as a JSON object in a script tag -->
     <script>
     var electionTitles = <?php echo json_encode($electionTitles); ?>;
     </script>
     <script src="js/updateStatus.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/editElectionDetails.js"></script>
 
 </body>
 
