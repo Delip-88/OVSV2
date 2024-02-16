@@ -29,6 +29,8 @@ function isEmailAlreadyRegistered($connect, $email)
 }
 
 $name = $_POST['name'];
+$dob = $_POST['dob'];
+$age = $_POST['age'];
 $number = $_POST['number'];
 $password = $_POST['password'];
 $cpassword = $_POST['cpassword'];
@@ -48,9 +50,9 @@ move_uploaded_file($tmp_name, "../uploads/$image");
 
 // Use prepared statement to prevent SQL injection
 $hash = password_hash($password, PASSWORD_DEFAULT);
-$query = "INSERT INTO pendingusers(Full_Name, Number, Password, Email, Address, Image, Role, Status) VALUES (?, ?, ?, ?, ?, ?, 'user', 'pending')";
+$query = "INSERT INTO pendingusers(Full_Name,DOB,Age, Number, Password, Email, Address, Image, Role, Status) VALUES (?,?,?, ?, ?, ?, ?, ?, 'user', 'pending')";
 $stmt = mysqli_prepare($connect, $query);
-mysqli_stmt_bind_param($stmt, 'ssssss', $name, $number, $hash, $email, $address, $image);
+mysqli_stmt_bind_param($stmt, 'ssssssss', $name, $dob, $age, $number, $hash, $email, $address, $image);
 $result = mysqli_stmt_execute($stmt);
 
 if ($result) {

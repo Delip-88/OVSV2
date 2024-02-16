@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
     } else if ($userRole === 'user') {
         if (password_verify($password, $row['Password'])) {
             $_SESSION['userdata'] = $row;
-            header('Location: ../Routes/userPannel.php');
+            header('Location: ../Routes/userPart/personalInfo.php');
             exit;
         } else {
             echo "

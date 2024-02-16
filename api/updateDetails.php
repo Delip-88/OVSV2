@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($update) {
         // Redirect the user back to the same page after the update
-        header("Location: ../Routes/userPannel.php");
+        header("Location: ../Routes/userPart/personalInfo.php");
         exit;
     } else {
         // Handle update failure

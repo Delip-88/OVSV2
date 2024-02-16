@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $connect->query($updateQuery);
 
             // Redirect after successful update
-            header("Location: ../Routes/userPannel.php");
+            header("Location: ../Routes/userPart/personalInfo.php");
             exit;
         } else {
             // Old password doesn't match

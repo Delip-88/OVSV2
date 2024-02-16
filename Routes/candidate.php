@@ -32,8 +32,6 @@ if (!$result) {
         <?php include './components/_header.php' ?>
 
         <nav>
-            <?php include './components/_navbar.php' ?>
-
             <div class="main">
                 <h3>Candidates </h3>
                 <hr>

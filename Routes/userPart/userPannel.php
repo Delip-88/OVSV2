@@ -3,7 +3,7 @@ $timeout = 30 * 24 * 60 * 60;
 session_set_cookie_params($timeout);
 session_start();
 if ($_SESSION['userdata']['Role'] !== 'user') {
-    header('location: ../Routes/loginPage.html');
+    header('location: ../../Routes/loginPage.html');
 }
 $userdata = $_SESSION['userdata'];
 ?>
@@ -16,29 +16,25 @@ $userdata = $_SESSION['userdata'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="../css/userPannel.css" />
+    <link rel="stylesheet" href="../../css/userPannel.css" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <header>
-        <figure>
-            <img src="../img/use.png" alt="" />
-        </figure>
-        <h1 id="title">SecureVote - Online Voting Platform</h1>
-        <div class="welcome">
-            <h3>Welcome, <span id="user">
-                    <?php echo $userdata['Full_Name']; ?>
-                </span></h3>
-            <a href="../api/logout.php" id="logout">LogOut</a>
-        </div>
+        <h1 id='title'>Online Voting System</h1>
+        <ul>
+            <div class='welcome'>
+                <h3><span id='user'><?php echo $userdata['Full_Name'] ?></span></h3>
+                <a href='../../api/logout.php' id='logout'>LogOut</a>
+            </div>
+        </ul>
     </header>
     <div class="container">
         <div class="card">
             <div class="img">
-                <img src="../uploads/<?php echo $userdata['Image'] ?>" alt="">
+                <img src="../../uploads/<?php echo $userdata['Image'] ?>" alt="">
             </div>
             <hr>
             <div class="info">
@@ -58,8 +54,8 @@ $userdata = $_SESSION['userdata'];
             <div class="main">
                 <div class="items">
                     <?php
-                    include("../api/connect.php");
-                    include("../api/checkUserVote.php");
+                    include("../../api/connect.php");
+                    include("../../api/checkUserVote.php");
 
                     $userId = $userdata['Id'];
                     // Fetch election titles
@@ -91,13 +87,12 @@ $userdata = $_SESSION['userdata'];
                             if (!empty($candidatesArray)) {
                                 echo "<div class='cardContainerCover'>";
                                 echo "<h2>Title : <span class='title'>{$rowElection['Title']} </span> </h2>";
-
                                 echo "<div class='cardContainer'>";
                                 // Display candidate information
                                 foreach ($candidatesArray as $rowCandidate) {
                                     echo "<div class='eCard' data-election-id='{$electionId}' data-candidate-id='{$rowCandidate['Id']}'>";
                                     echo "<div class='user-image'>";
-                                    echo "<img src='../uploads/{$rowCandidate['Image']}' alt='Candidate Image'>";
+                                    echo "<img src='../../uploads/{$rowCandidate['Image']}' alt='Candidate Image'>";
                                     echo "</div>";
                                     echo "<strong>Full Name: <span class='username'>{$rowCandidate['Full_Name']}</span></strong>";
                                     echo "<small>Description:<span class='username'> {$rowCandidate['Description']}</span></small>";
@@ -109,7 +104,7 @@ $userdata = $_SESSION['userdata'];
                                 if (!$hasVoted) {
                                     // Display the voting section only if the user has not voted in this election
                                     echo "<div class='voteSection'>";
-                                    echo "<form method='post' action='../api/vote.php'>";
+                                    echo "<form method='post' action='../../api/vote.php'>";
                                     echo "<label for='candidateSelection'>Vote : </label> ";
                                     echo "<select class='candidateSelection' name='candidateSelection' required>";
                                     echo "<option  disabled > --Select A Candidate --</option>";
@@ -150,7 +145,7 @@ $userdata = $_SESSION['userdata'];
         <small id='error'></small>
 
         <hr>
-        <form action="../api/updateDetails.php" method="post" class="pos" id="adC">
+        <form action="../../api/updateDetails.php" method="post" class="pos" id="adC">
             <br>
             <label for="name">Name:</label>
             <input type="text" name="name" id="name" value='<?php echo $userdata['Full_Name'] ?>'>
@@ -172,7 +167,7 @@ $userdata = $_SESSION['userdata'];
         <h2>Edit</h2>
         <hr>
         <small id='passwordError'></small>
-        <form action="../api/passwordChange.php" method="post" class="pos" id="form">
+        <form action="../../api/passwordChange.php" method="post" class="pos" id="form">
             <br>
             <label for="password">Current Pasword:</label>
             <input type="text" name="password" id="password" required>

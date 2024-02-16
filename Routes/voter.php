@@ -21,67 +21,66 @@ if (!$result) {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SecureVote - Online Voting Platform</title>
-  <link rel="stylesheet" href="../css/Home.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecureVote - Online Voting Platform</title>
+    <link rel="stylesheet" href="../css/Home.css" />
 </head>
 
 <body>
-  <div class="container">
-  <?php include './components/_header.php' ?>
+    <div class="container">
+        <?php include './components/_header.php' ?>
 
-    <nav>
-    <?php include './components/_navbar.php' ?>
+        <nav>
 
-      <div class="main">
-        <h3>User List</h3>
-        <hr>
-        <div class="table-container">
+            <div class="main">
+                <h3>User List</h3>
+                <hr>
+                <div class="table-container">
 
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Image</th>
-                <th>Full Name</th>
-                <th>Number</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Role</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<td>{$row['Id']}</td>";
-                echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
-                echo "<td>{$row['Full_Name']}</td>";
-                echo "<td>{$row['Number']}</td>";
-                echo "<td>{$row['Email']}</td>";
-                echo "<td>{$row['Address']}</td>";
-                echo "<td>{$row['Role']}</td>";
-                echo "<td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Image</th>
+                                <th>Full Name</th>
+                                <th>Number</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            while ($row = mysqli_fetch_assoc($result)) {
+                              echo "<tr>";
+                              echo "<td>{$row['Id']}</td>";
+                              echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
+                              echo "<td>{$row['Full_Name']}</td>";
+                              echo "<td>{$row['Number']}</td>";
+                              echo "<td>{$row['Email']}</td>";
+                              echo "<td>{$row['Address']}</td>";
+                              echo "<td>{$row['Role']}</td>";
+                              echo "<td>
         <form action='../api/process_action.php' method='post'>
             <input type='hidden' name='user_id' value='{$row['Id']}'>
             <input type='hidden' name='originating_page' value='voter'>
             <button type='submit' name='reject' class='reject'>Delete</button>
         </form>
       </td>";
-                echo "</tr>";
-              }
-              ?>
-            </tbody>
-          </table>
-        </div>
+                              echo "</tr>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
 
-      </div>
-    </nav>
-  </div>
+            </div>
+        </nav>
+    </div>
 
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (mysqli_stmt_execute($stmtInsertVote)) {
             echo "Vote successfully recorded!";
-            header("Location: ../Routes/userPannel.php");
+            header("Location: ../Routes/userPart/election.php");
         } else {
             echo "Error recording the vote. Please try again.";
         }

@@ -5,8 +5,13 @@
   font-family: sans-serif;
 }
 
+:root {
+  --topic-color: rgb(0, 94, 199);
+  --bgcolor : rgb(179, 178, 178);
+}
+
 body {
-  background-color: #e9f1fa;
+  background-color: rgb(0, 16, 37);
   scroll-behavior: smooth;
   min-width: 410px;
 }
@@ -28,9 +33,9 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 5px 30px;
-  background-color: #00abe4;
   color: white;
 }
+
 
 figure {
   width: 70px;
@@ -48,17 +53,8 @@ nav {
   display: flex;
   width: 100%;
   height: auto;
-  background-color: #85909c;
 }
 
-ul {
-  flex: 20%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #85909c;
-}
 
 textarea {
   width: 100%;
@@ -68,49 +64,47 @@ textarea {
   flex: 80%;
   padding: 20px 50px;
   min-height: 100vh;
-
-  background-color: #e9f1fa;
   position: relative;
 }
+
+ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 
 li {
   list-style-type: none;
   display: block;
   width: 100%;
   text-align: center;
-  border-bottom: 1px solid rgb(59, 58, 58);
 }
 
-.active {
-  /* background-color: rgba(128, 0, 128, 0.726); */
-  border-left: 4px solid purple;
-  color: purple;
-}
 
 ul li a {
-  padding: 20px;
+  padding: 10px;
   line-height: 30px;
   display: block;
-  font-size: large;
   text-decoration: none;
   color: white;
+}
+
+li a:last-child {
+  margin-right: 10px;
 }
 
 ul span {
   color: purple;
 }
 
-.manage {
-  color: rgb(163, 154, 154);
-  background-color: rgb(61, 51, 51);
-  padding: 10px 0;
-}
+
 
 .welcome {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap:px;
   flex-wrap: wrap;
 }
 
@@ -124,7 +118,7 @@ ul span {
 }
 
 #logout:hover {
-  background-color: rgb(12, 95, 128);
+  background-color: rgba(8, 59, 80, 0.897);
 }
 table {
   border-collapse: collapse;
@@ -141,11 +135,17 @@ td {
   padding: 8px;
   text-align: left;
 }
+td{
+  color: white;
+}
 
 th {
   background-color: #b1bfcf;
 }
+tr:nth-of-type(odd){
+  background-color: #13325567;
 
+}
 tr:nth-of-type(even) {
   background-color: #b1bfcf67;
 }
@@ -160,8 +160,10 @@ tr td:nth-child(2) {
   padding: 2px;
 }
 
+
 #user {
-  color: purple;
+  font-size: 15px;
+  color: rgb(51, 214, 51);
 }
 
 .user-image {
@@ -231,7 +233,7 @@ form button,
   justify-content: flex-start;
   flex-direction: column;
   gap: 5px;
-  background-color: #b8b8b8ce;
+  background-color: #b8b8b885;
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: 2px 3px 4px rgb(105, 88, 88);
@@ -254,7 +256,7 @@ form button,
 
 .card {
   background-color: rgba(143, 140, 140, 0.356);
-
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -344,6 +346,7 @@ textarea {
   border-radius: 5px;
   cursor: pointer;
   transition: transform 100ms ease;
+  font-size: small;
 }
 
 .cancel:hover {
@@ -431,11 +434,14 @@ select {
   flex-direction: column;
   gap: 10px;
 }
+.currentElections h2{
+  color: white;
+}
 
 .currentElectionBox {
+  background-color: var(--bgcolor);
+  color: black;
   border-radius: 10px;
-
-  background-color: #b1bfcf;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -445,6 +451,12 @@ select {
 .overview {
   display: flex;
   flex-direction: column;
+  color: white;
+  background-color: var(--bgcolor);
+  padding: 10px;
+
+  border-radius: 8px;
+  color: black;
   gap: 5px;
 }
 
@@ -478,6 +490,13 @@ select {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+}
+
+.active {
+  color: var(--topic-color);
+  position: relative;
+  transition: all 200ms ease;
+  border-bottom: 1px solid var(--topic-color);
 }
 
 .ongoingElectionName {
@@ -514,9 +533,6 @@ select {
     font-size: 20px;
   }
 
-  .welcome {
-    font-size: 18px;
-  }
   .accept,
   .reject {
     padding: 3px 7px;

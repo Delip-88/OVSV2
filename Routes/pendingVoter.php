@@ -1,8 +1,8 @@
 <?php
 session_start();
 if ($_SESSION['userdata']['Role'] !== 'admin') {
-  header('location: loginPage.html');
-  exit;
+    header('location: loginPage.html');
+    exit;
 }
 include("../api/connect.php");
 $userdata = $_SESSION['userdata'];
@@ -13,7 +13,7 @@ $result = mysqli_query($connect, $query);
 
 // Check if the query was successful
 if (!$result) {
-  die("Query failed: " . mysqli_error($connect));
+    die("Query failed: " . mysqli_error($connect));
 }
 ?>
 
@@ -32,7 +32,6 @@ if (!$result) {
         <?php include './components/_header.php' ?>
 
         <nav>
-            <?php include './components/_navbar.php' ?>
 
             <div class="main">
                 <h3>Pending User List</h3>
@@ -53,16 +52,16 @@ if (!$result) {
                         </thead>
                         <tbody>
                             <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-              echo "<tr>";
-              echo "<td>{$row['Id']}</td>";
-              echo "<td class='img-wrapper'><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
-              echo "<td>{$row['Full_Name']}</td>";
-              echo "<td>{$row['Number']}</td>";
-              echo "<td>{$row['Email']}</td>";
-              echo "<td>{$row['Address']}</td>";
-              echo "<td>{$row['Status']}</td>";
-              echo "<td>
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td>{$row['Id']}</td>";
+                                echo "<td class='img-wrapper'><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
+                                echo "<td>{$row['Full_Name']}</td>";
+                                echo "<td>{$row['Number']}</td>";
+                                echo "<td>{$row['Email']}</td>";
+                                echo "<td>{$row['Address']}</td>";
+                                echo "<td>{$row['Status']}</td>";
+                                echo "<td>
                         <form action='../api/process_action.php' method='post' class='btns'>
                             <input type='hidden' name='user_id' value='{$row['Id']}'>
                             <button type='submit' name='accept' class='accept'>Accept</button>
@@ -70,9 +69,9 @@ if (!$result) {
                             <button type='submit' name='reject' class='reject'>Reject</button>
                         </form>
                       </td>";
-              echo "</tr>";
-            }
-            ?>
+                                echo "</tr>";
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
