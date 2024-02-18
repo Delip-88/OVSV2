@@ -8,12 +8,18 @@
 :root {
   --topic-color: rgb(0, 94, 199);
   --bgcolor : rgb(179, 178, 178);
+  --boxcolor : rgba(143, 140, 140, 0.356);
+  --sample2:rgb(0 0 0 / 30%);
+  --sample3:rgb(0 0 0 / 95%);
+
+
 }
 
 body {
   background-color: rgb(0, 16, 37);
   scroll-behavior: smooth;
   min-width: 410px;
+  position: relative;
 }
 
 .container {
@@ -71,21 +77,23 @@ ul {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  margin-left: auto;
+  transition: width 150ms ease-in;
 }
 
 
 li {
   list-style-type: none;
-  display: block;
   width: 100%;
   text-align: center;
 }
 
 
 ul li a {
+  display: inline-block;
   padding: 10px;
-  line-height: 30px;
-  display: block;
   text-decoration: none;
   color: white;
 }
@@ -101,10 +109,9 @@ ul span {
 
 
 .welcome {
-  display: flex;
+  display: flex;flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap:px;
   flex-wrap: wrap;
 }
 
@@ -255,7 +262,7 @@ form button,
 }
 
 .card {
-  background-color: rgba(143, 140, 140, 0.356);
+  background-color: var(--sample2);
   color: white;
   display: flex;
   flex-direction: column;
@@ -437,10 +444,24 @@ select {
 .currentElections h2{
   color: white;
 }
+main{
+  color: white;
+  padding: 25px;
+  margin-top: 10px;
+}
 
+.result{
+  background-color: rgba(143, 140, 140, 0.356);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
 .currentElectionBox {
-  background-color: var(--bgcolor);
-  color: black;
+  background-color: var(--boxcolor);
+
+  color: white;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -452,11 +473,9 @@ select {
   display: flex;
   flex-direction: column;
   color: white;
-  background-color: var(--bgcolor);
+  background-color: var(--boxcolor);
   padding: 10px;
-
   border-radius: 8px;
-  color: black;
   gap: 5px;
 }
 
@@ -469,7 +488,7 @@ select {
 }
 
 .candidateCard {
-  background-color: rgba(123, 138, 160, 0.856);
+  background-color: rgba(0,0,0,.6);
   padding: 10px;
   display: flex;
   justify-content: space-around;
@@ -483,13 +502,13 @@ select {
   width: 100px;
   height: 100px;
   align-self: center;
+  overflow: hidden;
 }
 
 .user-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
 }
 
 .active {
@@ -498,10 +517,32 @@ select {
   transition: all 200ms ease;
   border-bottom: 1px solid var(--topic-color);
 }
-
-.ongoingElectionName {
-  color: #0004e6;
+.fa-bars{
+  display: none;
+  position: absolute;
+  top:7%;
+  left:4%;
+  cursor: pointer;
+  color: white;
+  width: 30px;
+  aspect-ratio: 1/1;
 }
+
+.fa-x{
+  display: none;
+  position: absolute;
+  top:4%;
+  left:35%;
+  cursor: pointer;
+  color: white;
+  z-index: 3;
+  width: 30px;
+  aspect-ratio: 1/1;
+  transition: transform 250ms ease-in;
+  transform: translateX(-210px);
+  transition-delay: 100ms;
+}
+
 
 .inactive {
   background-color: rgba(255, 255, 0, 0.87);
@@ -525,9 +566,7 @@ select {
     flex-direction: column;
   }
 
-  ul {
-    width: 100%;
-  }
+
 
   #title {
     font-size: 20px;
@@ -545,6 +584,34 @@ select {
   header {
     flex-direction: column;
     height: auto;
-    gap: 5px;
+  }
+  .fa-bars{
+    display: inline-block;
+  }
+
+  .menu li{
+    padding: 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.678);
+  }
+
+  .menu li a {
+    width: 100%;
+    line-height: 50px; 
+    font-size: 20px;
+  }
+
+  .menu {
+    z-index: 2;
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    flex-direction: column;
+    width: 0px;
+    background-color: var(--sample3);
+    overflow: hidden;
+    padding-top: 15%;
+    border-radius: 50px 50px 50px 42px / 0px 25px 25px 2px;
   }
 }

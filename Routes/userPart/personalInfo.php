@@ -39,12 +39,13 @@ $userdata = $_SESSION['userdata'];
             <figure class="userImage">
                 <img src="../../uploads/<?php echo $userdata['Image']; ?>" alt="userimage" srcset="">
             </figure>
-            <button>Change Profile Picture</button>
+            <label for="changeImage" id="cbtn">Change Profile Picture</label>
+            <input type="file" name="changeImage" id="changeImage"> 
             <button class='btn_more'><i class="fa-solid fa-pen"></i>Edit Profile</button>
         </div>
         <div class="info">
             <span>Name <br>
-                <div class="data"><?php echo $userdata['Full_Name']; ?></div>
+                <div class="data" id="Full_Name"><?php echo $userdata['Full_Name']; ?></div>
             </span>
             <span>DOB <br>
                 <div class="data"><?php echo $userdata['DOB']; ?></div>
@@ -53,13 +54,13 @@ $userdata = $_SESSION['userdata'];
                 <div class="data"><?php echo $userdata['Age']; ?></div>
             </span>
             <span>Number <br>
-                <div class="data"><?php echo $userdata['Number']; ?></div>
+                <div class="data" id="Number"><?php echo $userdata['Number']; ?></div>
             </span>
             <span>Email <br>
                 <div class="data"><?php echo $userdata['Email']; ?></div>
             </span>
             <span>Address <br>
-                <div class="data"><?php echo $userdata['Address']; ?></div>
+                <div class="data" id="Address"><?php echo $userdata['Address']; ?></div>
             </span>
             <span>Verified <br>
                 <div class="data"> True</div>
@@ -75,22 +76,23 @@ $userdata = $_SESSION['userdata'];
         <form action="../../api/updateDetails.php" method="post" class="pos" id="adC">
             <br>
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name" value='<?php echo $userdata['Full_Name'] ?>'>
+            <input type="text" name="name" id="editName" value=''>
             <br>
             <label for="address">Address:</label>
-            <input type="text" name="address" id="address" value='<?php echo $userdata['Address'] ?>'>
+            <input type="text" name="address" id="editAddress" value=''>
             <br>
             <label for="number">Number:</label>
-            <input type="text" name="number" id="number" value='<?php echo $userdata['Number'] ?>'>
+            <input type="text" name="number" id="editNumber" value=''>
             <br>
             <div class="btns">
                 <input type="hidden" name="uid" value="<?php echo $userdata['Id'] ?>">
                 <button type="submit" id="btnC">Apply Changes</button>
-                <button type="reset" class="cancel btn_cancel">cancel</button>
+                <button type="reset" class="cancel btn_cancel" onclick="closeEditPopup()">cancel</button>
             </div>
         </form>
     </div>
-    <script src="../js/script.js"></script>
+    <script src="../js/editUserInfo.js"></script>
+
 </body>
 
 </html>

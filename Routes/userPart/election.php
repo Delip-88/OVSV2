@@ -2,14 +2,41 @@
 $timeout = 30 * 24 * 60 * 60;
 session_set_cookie_params($timeout);
 session_start();
-if ($_SESSION['userdata']['Role'] !== 'user') {
+
+// Redirect if user is not logged in or doesn't have 'user' role
+if (!isset($_SESSION['userdata']) || $_SESSION['userdata']['Role'] !== 'user') {
     header('location: ../../Routes/loginPage.html');
+    exit(); // Stop further execution
 }
+
 $userdata = $_SESSION['userdata'];
 include("../../api/connect.php");
 include("../../api/checkUserVote.php");
 $userId = $userdata['Id'];
+
+// Function to fetch elections based on status
+function fetchElections($connect, $status)
+{
+    $query = "SELECT * FROM election WHERE Status ='$status'";
+    $result = mysqli_query($connect, $query);
+    if (!$result) {
+        die("Error fetching elections: " . mysqli_error($connect));
+    }
+    return $result;
+}
+
+// Function to display election sections
+function displayElectionSections($connect, $userId, $elections)
+{
+    while ($rowElection = mysqli_fetch_assoc($elections)) {
+        echo "<section class='eid'>";
+        echo "<span class='eTitle'>{$rowElection['Title']} </span>";
+        echo "<caption>{$rowElection['StartDate']} </caption> <br/>";
+        echo "</section>";
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,15 +69,10 @@ $userId = $userdata['Id'];
         <hr>
 
         <?php
-        $queryUpcomingElection = "SELECT * FROM election WHERE Status ='inactive'";
-        $resultUpcomingElection = mysqli_query($connect, $queryUpcomingElection);
+        // Fetch upcoming elections
+        $resultUpcomingElection = fetchElections($connect, 'inactive');
         echo "<div class='upcomingElection'>";
-        while ($rowUpcomingElection = mysqli_fetch_assoc($resultUpcomingElection)) {
-            echo "<section class='eid'>";
-            echo "<span class='eTitle'>{$rowUpcomingElection['Title']} </span>";
-            echo "<caption>{$rowUpcomingElection['StartDate']} </caption> <br/>";
-            echo "</section>";
-        }
+        displayElectionSections($connect, $userId, $resultUpcomingElection);
         echo "</div>";
         ?>
 
@@ -62,74 +84,70 @@ $userId = $userdata['Id'];
             <div class="items">
                 <?php
                 // Fetch election titles
-                $queryElection = "SELECT Id, Title, Status FROM election";
-                $resultElection = mysqli_query($connect, $queryElection);
-
+                $resultElection = fetchElections($connect, 'Ongoing');
                 while ($rowElection = mysqli_fetch_assoc($resultElection)) {
                     // Display election title
-                    if ($rowElection['Status'] === 'Ongoing') {
-                        $electionId = $rowElection['Id'];
+                    $electionId = $rowElection['Id'];
 
-                        // Fetching election title
-                        $queryCandidates = "SELECT * FROM candidate WHERE Position = ?";
-                        $stmtCandidates = mysqli_prepare($connect, $queryCandidates);
-                        mysqli_stmt_bind_param($stmtCandidates, 's', $rowElection['Title']);
-                        mysqli_stmt_execute($stmtCandidates);
-                        $resultCandidates = mysqli_stmt_get_result($stmtCandidates);
+                    // Fetching election title
+                    $queryCandidates = "SELECT * FROM candidate WHERE Position = ?";
+                    $stmtCandidates = mysqli_prepare($connect, $queryCandidates);
+                    mysqli_stmt_bind_param($stmtCandidates, 's', $rowElection['Title']);
+                    mysqli_stmt_execute($stmtCandidates);
+                    $resultCandidates = mysqli_stmt_get_result($stmtCandidates);
 
-                        // Store candidates in an array
-                        $candidatesArray = [];
-                        while ($rowCandidate = mysqli_fetch_assoc($resultCandidates)) {
-                            $candidatesArray[] = $rowCandidate;
-                        }
-
-                        // Check if the user has already voted in this election
-                        $hasVoted = checkUserVote($connect, $userId, $electionId);
-
-                        // Check if there are candidates before displaying the container
-                        if (!empty($candidatesArray)) {
-                            echo "<div class='cardContainerCover'>";
-                            echo "<h2>Title : <span class='title'>{$rowElection['Title']} </span> </h2>";
-                            echo "<div class='cardContainer'>";
-                            // Display candidate information
-                            foreach ($candidatesArray as $rowCandidate) {
-                                echo "<div class='eCard' data-election-id='{$electionId}' data-candidate-id='{$rowCandidate['Id']}'>";
-                                echo "<div class='user-image'>";
-                                echo "<img src='../../uploads/{$rowCandidate['Image']}' alt='Candidate Image'>";
-                                echo "</div>";
-                                echo "<strong>Full Name: <span class='username'>{$rowCandidate['Full_Name']}</span></strong>";
-                                echo "<small>Description:<span class='username'> {$rowCandidate['Description']}</span></small>";
-                                echo "</div>"; // Close the candidate card here
-                            }
-
-                            echo "</div>";
-
-                            if (!$hasVoted) {
-                                // Display the voting section only if the user has not voted in this election
-                                echo "<div class='voteSection'>";
-                                echo "<form method='post' action='../../api/vote.php'>";
-                                echo "<label for='candidateSelection'>Vote : </label> ";
-                                echo "<select class='candidateSelection' name='candidateSelection' required>";
-                                echo "<option  disabled > --Select A Candidate --</option>";
-                                // Display candidate options in the dropdown
-                                foreach ($candidatesArray as $rowCandidate) {
-                                    echo "<option value='" . $rowCandidate['Id'] . "' >" . $rowCandidate['Full_Name'] . "</option>";
-                                }
-                                echo "</select>";
-                                echo "<input type='hidden' name='userId' value='$userId'>";
-                                echo "<input type='hidden' name='electionId' value='$electionId'>";
-                                echo "<button type='submit' class='voteBtn'>Submit</button>";
-                                echo "</form>";
-                                echo "</div>";
-                            } else {
-                                echo "<div class='alreadyVoted'>You have already voted in this election.</div>";
-                            }
-
-                            echo "</div>"; // Close the cardContainer only if there are candidates
-                        }
-
-                        mysqli_stmt_close($stmtCandidates);
+                    // Store candidates in an array
+                    $candidatesArray = [];
+                    while ($rowCandidate = mysqli_fetch_assoc($resultCandidates)) {
+                        $candidatesArray[] = $rowCandidate;
                     }
+
+                    // Check if the user has already voted in this election
+                    $hasVoted = checkUserVote($connect, $userId, $electionId);
+
+                    // Check if there are candidates before displaying the container
+                    if (!empty($candidatesArray)) {
+                        echo "<div class='cardContainerCover'>";
+                        echo "<h2>Title : <span class='title'>{$rowElection['Title']} </span> </h2>";
+                        echo "<div class='cardContainer'>";
+                        // Display candidate information
+                        foreach ($candidatesArray as $rowCandidate) {
+                            echo "<div class='eCard' data-election-id='{$electionId}' data-candidate-id='{$rowCandidate['Id']}'>";
+                            echo "<div class='user-image'>";
+                            echo "<img src='../../uploads/{$rowCandidate['Image']}' alt='Candidate Image'>";
+                            echo "</div>";
+                            echo "<strong>Full Name: <span class='username'>{$rowCandidate['Full_Name']}</span></strong>";
+                            echo "<small>Description:<span class='username'> {$rowCandidate['Description']}</span></small>";
+                            echo "</div>"; // Close the candidate card here
+                        }
+
+                        echo "</div>";
+
+                        if (!$hasVoted) {
+                            // Display the voting section only if the user has not voted in this election
+                            echo "<div class='voteSection'>";
+                            echo "<form method='post' action='../../api/vote.php'>";
+                            echo "<label for='candidateSelection'>Vote : </label> ";
+                            echo "<select class='candidateSelection' name='candidateSelection' required>";
+                            echo "<option  disabled > --Select A Candidate --</option>";
+                            // Display candidate options in the dropdown
+                            foreach ($candidatesArray as $rowCandidate) {
+                                echo "<option value='" . $rowCandidate['Id'] . "' >" . $rowCandidate['Full_Name'] . "</option>";
+                            }
+                            echo "</select>";
+                            echo "<input type='hidden' name='userId' value='$userId'>";
+                            echo "<input type='hidden' name='electionId' value='$electionId'>";
+                            echo "<button type='submit' class='voteBtn'>Submit</button>";
+                            echo "</form>";
+                            echo "</div>";
+                        } else {
+                            echo "<div class='alreadyVoted'>You have already voted in this election.</div>";
+                        }
+
+                        echo "</div>"; // Close the cardContainer only if there are candidates
+                    }
+
+                    mysqli_stmt_close($stmtCandidates);
                 }
 
                 // Close the database connection if necessary

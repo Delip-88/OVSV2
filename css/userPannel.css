@@ -114,16 +114,20 @@ main{
 button{
   border: none;
   outline: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.profile button{
+.profile button, #cbtn{
+  border-radius: 7px;
+  cursor: pointer;
   background-color: var(--topic-color);
   padding: 10px;
   color: white;
+  
 }
 
+#cbtn{
+  font-size: 15px;
+}
 .fa-solid{
   color: var(--topic-color);
   margin-right: 10px;
@@ -437,6 +441,9 @@ h3{
  .pop_box2 {
    gap: 10px;
 
+ }
+ #changeImage{
+  display: none;
  }
 
  .visible {

@@ -1,5 +1,4 @@
 <?php
-echo "Script is executed.";
 
 include("connect.php");
 

@@ -18,9 +18,14 @@ $userdata = $_SESSION['userdata'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
+    <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <!-- <i class='fa-solid fa-bars'></i> -->
+    <img src="../img/bars-solid.svg" alt="bar-icon" srcset="" class='fa-bars'>
+    <img src="../img/x-solid.svg" alt="x-icon" srcset="" class='fa-x'>
+    
     <div class="container">
         <?php include 'components/_header.php' ?>
         <nav>
@@ -106,6 +111,7 @@ $userdata = $_SESSION['userdata'];
             </div>
         </nav>
     </div>
+    <script src="js/menu.js"></script>
 </body>
 
 </html>
