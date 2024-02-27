@@ -28,6 +28,8 @@ if (!$result) {
 </head>
 
 <body>
+    <?php include 'components/_sidebar.php' ?>
+
     <div class="container">
         <?php include './components/_header.php' ?>
 
@@ -80,6 +82,8 @@ if (!$result) {
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
+
 </body>
 
 </html>

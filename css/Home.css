@@ -72,7 +72,11 @@ textarea {
   min-height: 100vh;
   position: relative;
 }
+.main h3{
 
+  color
+  : white;
+}
 ul {
   height: 100%;
   display: flex;
@@ -80,7 +84,6 @@ ul {
   justify-content: center;
   font-size: 15px;
   margin-left: auto;
-  transition: width 150ms ease-in;
 }
 
 
@@ -173,13 +176,6 @@ tr td:nth-child(2) {
   color: rgb(51, 214, 51);
 }
 
-.user-image {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  cursor: pointer;
-}
-
 form button,
 .more {
   outline: none;
@@ -218,7 +214,7 @@ form button,
   border-radius: 6px;
   background-color: red;
   color: white;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   transition: all 100ms ease;
 }
@@ -262,7 +258,7 @@ form button,
 }
 
 .card {
-  background-color: var(--sample2);
+  /* background-color: var(--sample2); */
   color: white;
   display: flex;
   flex-direction: column;
@@ -271,6 +267,7 @@ form button,
   gap: 15px;
   border-radius: 10px;
   width: 300px;
+  border: 1px solid gray;
 }
 
 .userImage {
@@ -278,19 +275,6 @@ form button,
   width: 100px;
   aspect-ratio: 1/1;
   overflow: hidden;
-}
-
-.userImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px;
-  filter: drop-shadow(4px 4px 15px white);
-}
-
-.label {
-  display: inline;
-  font-weight: bold;
 }
 
 #addC {
@@ -406,6 +390,8 @@ select {
   border-radius: 5px;
   position: relative;
   gap: 3px;
+  color: white;
+  font-weight: 100;
 }
 
 .modifybtns {
@@ -501,15 +487,14 @@ main{
 .user-image {
   width: 100px;
   height: 100px;
+  border-radius: 5px;
   align-self: center;
   overflow: hidden;
-}
-
-.user-image img {
-  width: 100%;
-  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
   object-fit: cover;
 }
+
 
 .active {
   color: var(--topic-color);
@@ -518,10 +503,10 @@ main{
   border-bottom: 1px solid var(--topic-color);
 }
 .fa-bars{
-  display: none;
+  /* display: none; */
   position: absolute;
-  top:7%;
-  left:4%;
+  top:11%;
+  left:3%;
   cursor: pointer;
   color: white;
   width: 30px;
@@ -529,20 +514,43 @@ main{
 }
 
 .fa-x{
-  display: none;
+  /* display: none; */
   position: absolute;
-  top:4%;
-  left:35%;
+  top: 3%;
+  left: 75%;
   cursor: pointer;
   color: white;
-  z-index: 3;
-  width: 30px;
-  aspect-ratio: 1/1;
-  transition: transform 250ms ease-in;
-  transform: translateX(-210px);
-  transition-delay: 100ms;
+  z-index: 10;
+  width: 20px;
+  aspect-ratio: 1/2;
+
+}
+.sidebar{
+  z-index: 2;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  flex-direction: column;
+  width: 200px;
+  background-color: var(--sample3);
+  display: none;
+  padding-top: 20%;
+  min-height: 200vh;
+  overflow: visible;
 }
 
+.sidebar li{
+  padding: 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.678);
+}
+
+.sidebar li a {
+  width: 100%;
+  line-height: 45px; 
+  font-size: 16px;
+}
 
 .inactive {
   background-color: rgba(255, 255, 0, 0.87);
@@ -557,6 +565,9 @@ main{
 }
 
 @media only screen and (max-width: 650px) {
+  .menu{
+    display: none;
+  }
   .main {
     padding: 10px 5px;
     font-size: small;
@@ -565,7 +576,9 @@ main{
   nav {
     flex-direction: column;
   }
-
+.more{
+  top: 5%;
+}
 
 
   #title {
@@ -581,37 +594,9 @@ main{
 }
 
 @media only screen and (max-width: 600px) {
-  header {
-    flex-direction: column;
-    height: auto;
-  }
+
   .fa-bars{
-    display: inline-block;
-  }
-
-  .menu li{
-    padding: 0;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.678);
-  }
-
-  .menu li a {
-    width: 100%;
-    line-height: 50px; 
-    font-size: 20px;
-  }
-
-  .menu {
-    z-index: 2;
     display: block;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    flex-direction: column;
-    width: 0px;
-    background-color: var(--sample3);
-    overflow: hidden;
-    padding-top: 15%;
-    border-radius: 50px 50px 50px 42px / 0px 25px 25px 2px;
   }
+
 }

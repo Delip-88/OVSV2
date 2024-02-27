@@ -23,18 +23,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $connect->query($updateQuery);
 
             // Redirect after successful update
-            header("Location: ../Routes/userPart/personalInfo.php");
+            echo "<script> 
+            alert('Password Change sucessully!!');
+            window.location.href= '../Routes/userPart/personalInfo.php';
+            </script>";
             exit;
         } else {
             // Old password doesn't match
-            echo "Old Password Doesn't Match, Try Again !!";
+            echo "<script> 
+            alert('Old Password Doesn\'t Match, Try Again !!');
+            window.location.href= '../Routes/userPart/personalInfo.php';
+            </script>";
+            exit;
+
         }
     } else {
         // User not found or multiple users found (should not happen)
-        echo "User not found or multiple users found!";
+        echo "
+        alert('User not found or multiple users found!');
+        window.location.href= '../Routes/userPart/personalInfo.php';
+        </script>";
+        exit;
     }
 } else {
     // Invalid request method
-    echo "Invalid request method";
+    echo "<script> 
+    alert('Invalid request method');
+    window.location.href= '../Routes/userPart/personalInfo.php';
+    </script>";
+    exit;
+
 }
 ?>

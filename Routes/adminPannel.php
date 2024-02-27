@@ -22,10 +22,9 @@ $userdata = $_SESSION['userdata'];
 </head>
 
 <body>
-    <!-- <i class='fa-solid fa-bars'></i> -->
-    <img src="../img/bars-solid.svg" alt="bar-icon" srcset="" class='fa-bars'>
-    <img src="../img/x-solid.svg" alt="x-icon" srcset="" class='fa-x'>
-    
+    <?php include 'components/_sidebar.php' ?>
+
+
     <div class="container">
         <?php include 'components/_header.php' ?>
         <nav>
@@ -85,8 +84,8 @@ $userdata = $_SESSION['userdata'];
                           echo "<div class='candidateCardCover'>";
                           while ($rowCandidates = mysqli_fetch_assoc($resultCandidates)) {
                             echo "<div class='candidateCard'>";
-                            echo "<div class='user-image'>";
-                            echo "<img src='../uploads/{$rowCandidates['Image']}' alt='Candidate Image'>";
+                            echo "<div class='userImage'>";
+                            echo "<img src='../uploads/{$rowCandidates['Image']}' alt='Candidate Image' class='user-image'>";
                             echo "</div>";
                             echo "<p>Name <strong>: " . $rowCandidates['Full_Name'] . "</strong></p>";
 

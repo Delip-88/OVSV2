@@ -50,6 +50,7 @@ function displayElectionSections($connect, $userId, $elections)
 </head>
 
 <body>
+
     <header>
         <h1>Online Voting System</h1>
         <nav>
@@ -110,6 +111,7 @@ function displayElectionSections($connect, $userId, $elections)
                         echo "<div class='cardContainerCover'>";
                         echo "<h2>Title : <span class='title'>{$rowElection['Title']} </span> </h2>";
                         echo "<div class='cardContainer'>";
+
                         // Display candidate information
                         foreach ($candidatesArray as $rowCandidate) {
                             echo "<div class='eCard' data-election-id='{$electionId}' data-candidate-id='{$rowCandidate['Id']}'>";
@@ -118,7 +120,7 @@ function displayElectionSections($connect, $userId, $elections)
                             echo "</div>";
                             echo "<strong>Full Name: <span class='username'>{$rowCandidate['Full_Name']}</span></strong>";
                             echo "<small>Description:<span class='username'> {$rowCandidate['Description']}</span></small>";
-                            echo "</div>"; // Close the candidate card here
+                            echo "</div>";
                         }
 
                         echo "</div>";
@@ -127,7 +129,7 @@ function displayElectionSections($connect, $userId, $elections)
                             // Display the voting section only if the user has not voted in this election
                             echo "<div class='voteSection'>";
                             echo "<form method='post' action='../../api/vote.php'>";
-                            echo "<label for='candidateSelection'>Vote : </label> ";
+                            echo "<label for='candidateSelection' class='labelVote'>Vote : </label> ";
                             echo "<select class='candidateSelection' name='candidateSelection' required>";
                             echo "<option  disabled > --Select A Candidate --</option>";
                             // Display candidate options in the dropdown

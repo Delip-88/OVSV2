@@ -1,8 +1,8 @@
 <?php
 session_start();
 if ($_SESSION['userdata']['Role'] !== 'admin') {
-  header('location: loginPage.html');
-  exit;
+    header('location: loginPage.html');
+    exit;
 }
 
 $userdata = $_SESSION['userdata'];
@@ -14,7 +14,7 @@ $result = mysqli_query($connect, $query);
 
 // Check if the query was successful
 if (!$result) {
-  die("Query failed: " . mysqli_error($connect));
+    die("Query failed: " . mysqli_error($connect));
 }
 ?>
 <!DOCTYPE html>
@@ -28,6 +28,8 @@ if (!$result) {
 </head>
 
 <body>
+    <?php include 'components/_sidebar.php' ?>
+
     <div class="container">
         <?php include './components/_header.php' ?>
 
@@ -54,22 +56,22 @@ if (!$result) {
                         <tbody>
                             <?php
                             while ($row = mysqli_fetch_assoc($result)) {
-                              echo "<tr>";
-                              echo "<td>{$row['Id']}</td>";
-                              echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
-                              echo "<td>{$row['Full_Name']}</td>";
-                              echo "<td>{$row['Number']}</td>";
-                              echo "<td>{$row['Email']}</td>";
-                              echo "<td>{$row['Address']}</td>";
-                              echo "<td>{$row['Role']}</td>";
-                              echo "<td>
+                                echo "<tr>";
+                                echo "<td>{$row['Id']}</td>";
+                                echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
+                                echo "<td>{$row['Full_Name']}</td>";
+                                echo "<td>{$row['Number']}</td>";
+                                echo "<td>{$row['Email']}</td>";
+                                echo "<td>{$row['Address']}</td>";
+                                echo "<td>{$row['Role']}</td>";
+                                echo "<td>
         <form action='../api/process_action.php' method='post'>
             <input type='hidden' name='user_id' value='{$row['Id']}'>
             <input type='hidden' name='originating_page' value='voter'>
             <button type='submit' name='reject' class='reject'>Delete</button>
         </form>
       </td>";
-                              echo "</tr>";
+                                echo "</tr>";
                             }
                             ?>
                         </tbody>
@@ -81,6 +83,8 @@ if (!$result) {
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
+
 </body>
 
 </html>

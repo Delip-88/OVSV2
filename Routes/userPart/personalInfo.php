@@ -36,11 +36,13 @@ $userdata = $_SESSION['userdata'];
     </header>
     <main>
         <div class="profile">
+            <i class="fa-solid fa-gear setting"></i>
+
             <figure class="userImage">
                 <img src="../../uploads/<?php echo $userdata['Image']; ?>" alt="userimage" srcset="">
             </figure>
             <label for="changeImage" id="cbtn">Change Profile Picture</label>
-            <input type="file" name="changeImage" id="changeImage"> 
+            <input type="file" name="changeImage" id="changeImage">
             <button class='btn_more'><i class="fa-solid fa-pen"></i>Edit Profile</button>
         </div>
         <div class="info">
@@ -91,6 +93,36 @@ $userdata = $_SESSION['userdata'];
             </div>
         </form>
     </div>
+    <div class="pop_box2" id="">
+        <h2>Edit</h2>
+        <hr>
+        <small id='passwordError'></small>
+        <form action="../../api/passwordChange.php" method="post" class="pos" id="form">
+            <br>
+            <label for="password">Current Pasword:</label>
+            <input type="text" name="password" id="password" required>
+            <br>
+            <br>
+            <label for="newPassword">New Password:</label>
+            <input type="text" name="newPassword" id="newPassword" required>
+            <br>
+            <br>
+            <label for="rePassword">Confirm Password:</label>
+            <input type="text" name="rePassword" id="rePassword" required>
+            <br>
+            <br>
+            <div class="btns">
+                <input type="hidden" name="UID" value="<?php echo $userdata['Id']; ?>">
+                <button type="submit" id="btnC">Apply Changes</button>
+                <button type="reset" class="cancel btn_cancel2">cancel</button>
+            </div>
+        </form>
+
+    </div>
+
+
+    <script src='../js/userScript.js'></script>
+    <script src="../js/passwordValidation.js"></script>
     <script src="../js/editUserInfo.js"></script>
 
 </body>

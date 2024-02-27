@@ -28,6 +28,8 @@ if (!$result) {
 </head>
 
 <body>
+    <?php include 'components/_sidebar.php' ?>
+
     <div class="container">
         <?php include './components/_header.php' ?>
 
@@ -41,9 +43,9 @@ if (!$result) {
                     while ($row = mysqli_fetch_assoc($result)) {
                       echo "<div class='card'>";
                       echo "<div class='userImage'><img class='user-image' src='../uploads/{$row['Image']}' alt='Image'></div>";
-                      echo "<span class='label'>Name : <strong>{$row['Full_Name']}</strong></span > ";
-                      echo "<span class='label'>Position : <strong>{$row['Position']}</strong></span > ";
-                      echo "<span class='label'>Description : <strong>{$row['Description']}</strong>  </span >";
+                      echo "<span class='label'>Name : <span>{$row['Full_Name']}</span></span > ";
+                      echo "<span class='label'>Position : <span>{$row['Position']}</span></span > ";
+                      echo "<span class='label'>Description : <span>{$row['Description']}</span>  </span >";
                       echo "
               <form action='../api/process_action.php' method='post'>
                 <input type='hidden' name='user_id' value='{$row['Id']}'>
@@ -101,6 +103,8 @@ if (!$result) {
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
+
 </body>
 
 </html>
