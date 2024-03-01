@@ -6,17 +6,48 @@
 }
 
 :root {
+  --body-color :rgb(0, 16, 37);
   --topic-color: rgb(0, 94, 199);
   --bgcolor : rgb(179, 178, 178);
   --boxcolor : rgba(143, 140, 140, 0.356);
   --sample2:rgb(0 0 0 / 30%);
   --sample3:rgb(0 0 0 / 95%);
+}
 
+/* Define scrollbar width and color */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #7a7a7a;
+}
 
+/* Handle part of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: var(--sample2);
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--body-color);
+}
+
+/* Track part of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #3b5875;
+}
+
+/* Button arrows (optional) */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Corner between vertical and horizontal scrollbar (optional) */
+::-webkit-scrollbar-corner {
+  background-color: #0a0a0a;
 }
 
 body {
-  background-color: rgb(0, 16, 37);
+  background-color: var(--body-color);
   scroll-behavior: smooth;
   min-width: 410px;
   position: relative;
@@ -443,6 +474,7 @@ main{
   display: flex;
   gap: 10px;
   flex-direction: column;
+  margin-top: 10px;
 }
 .currentElectionBox {
   background-color: var(--boxcolor);
@@ -553,7 +585,7 @@ main{
 }
 
 .inactive {
-  background-color: rgba(255, 255, 0, 0.87);
+  background-color: rgb(255 255 0 / 76%);
 }
 
 .Ongoing {
@@ -577,10 +609,8 @@ main{
     flex-direction: column;
   }
 .more{
-  top: 5%;
+  top: 0%;
 }
-
-
   #title {
     font-size: 20px;
   }
@@ -597,6 +627,7 @@ main{
 
   .fa-bars{
     display: block;
+    z-index: 100;
   }
 
 }

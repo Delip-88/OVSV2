@@ -101,8 +101,9 @@ function displayElectionSections($connect, $userId, $elections)
                     $candidatesArray = [];
                     while ($rowCandidate = mysqli_fetch_assoc($resultCandidates)) {
                         $candidatesArray[] = $rowCandidate;
-                    }
+                        print_r($candidatesArray);
 
+                    }
                     // Check if the user has already voted in this election
                     $hasVoted = checkUserVote($connect, $userId, $electionId);
 
@@ -148,7 +149,6 @@ function displayElectionSections($connect, $userId, $elections)
 
                         echo "</div>"; // Close the cardContainer only if there are candidates
                     }
-
                     mysqli_stmt_close($stmtCandidates);
                 }
 

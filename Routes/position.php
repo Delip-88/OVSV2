@@ -105,11 +105,12 @@ if (!$result) {
             <input type="text" name="title" id="title" required>
             <br>
             <label for="startDate">Starting Date & Time : </label>
-            <input type="datetime-local" name="startDate" id="startDate" min="<?php echo date('Y-m-d\TH:i'); ?>">
+            <input type="datetime-local" name="startDate" id="startDate" required
+                min="<?php echo date('Y-m-d\TH:i'); ?>">
             <br>
             <label for="endDate">Closing Date & Time :
             </label>
-            <input type="datetime-local" name="endDate" id="endDate" min="<?php echo date('Y-m-d\TH:i'); ?>">
+            <input type="datetime-local" name="endDate" id="endDate" required min="<?php echo date('Y-m-d\TH:i'); ?>">
             <br>
 
             <div class="btns">

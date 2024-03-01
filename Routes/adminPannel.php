@@ -75,7 +75,7 @@ $userdata = $_SESSION['userdata'];
 
                         while ($rowElection = mysqli_fetch_assoc($resultElection)) {
                           echo "<div class='currentElectionBox'>";
-                          echo "<h3>Position : <span class='ongoingElectionName'>" . $rowElection["Title"] . "</span></h3>";
+                          echo "<h3>Title : <span class='ongoingElectionName'>" . $rowElection["Title"] . "</span></h3>";
 
                           //Display election candidates
                           $queryCandidates = "SELECT Id,Full_Name,Image FROM candidate WHERE Position='{$rowElection['Title']}'";

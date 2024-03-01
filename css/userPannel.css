@@ -7,12 +7,45 @@
  }
 
  :root {
-   --topic-color: rgb(0, 94, 199);
-   --bgcolor: rgb(179, 178, 178);
+  --body-color :rgb(0, 16, 37);
+  --topic-color: rgb(0, 94, 199);
+  --bgcolor : rgb(179, 178, 178);
   --boxcolor : rgba(143, 140, 140, 0.356);
-
+  --sample2:rgb(0 0 0 / 30%);
+  --sample3:rgb(0 0 0 / 95%);
  }
 
+/* Define scrollbar width and color */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #7a7a7a;
+}
+
+/* Handle part of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: var(--sample2);
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--body-color);
+}
+
+/* Track part of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #3b5875;
+}
+
+/* Button arrows (optional) */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Corner between vertical and horizontal scrollbar (optional) */
+::-webkit-scrollbar-corner {
+  background-color: #0a0a0a;
+}
 
  body {
    width: 100%;
@@ -259,7 +292,7 @@ h3{
    justify-content: space-around;
    border-radius: 10px;
    flex-direction: column;
-   padding: 20px;
+   padding: 10px;
 
  }
  .upcomingElection{
@@ -297,7 +330,7 @@ h3{
    display: flex;
    justify-content: space-around;
    flex-direction: column;
-   gap: 10px;
+   gap: 5px;
    padding: 10px;
    border-radius: 10px;
    color: white;
@@ -312,7 +345,7 @@ h3{
  }
 
  .voteSection {
-   padding: 15px;
+   padding: 7px;
  }
 
  .voteSection select {
@@ -398,8 +431,7 @@ h3{
  }
 
  .alreadyVoted {
-   /* color: var(--topic-color); */
-   color: blue;
+   color: rgba(4, 194, 4, 0.979);
    padding: 5px;
  }
 
