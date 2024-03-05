@@ -4,6 +4,7 @@ session_set_cookie_params($timeout);
 session_start();
 if ($_SESSION['userdata']['Role'] !== 'user') {
     header('location: ../../Routes/loginPage.html');
+    exit;
 }
 $userdata = $_SESSION['userdata'];
 ?>
@@ -26,7 +27,7 @@ $userdata = $_SESSION['userdata'];
             <ul>
                 <li><a href="" class='active'>Personal Info</a></li>
                 <li><a href="election.php">Elections</a></li>
-                <li><a href="">Results</a></li>
+                <li><a href="results.php">Results</a></li>
             </ul>
             <div class='welcome'>
                 <h3><span id='user'><?php echo $userdata['Full_Name'] ?></span></h3>
@@ -41,9 +42,7 @@ $userdata = $_SESSION['userdata'];
             <figure class="userImage">
                 <img src="../../uploads/<?php echo $userdata['Image']; ?>" alt="userimage" srcset="">
             </figure>
-            <label for="changeImage" id="cbtn">Change Profile Picture</label>
-            <input type="file" name="changeImage" id="changeImage">
-            <button class='btn_more'><i class="fa-solid fa-pen"></i>Edit Profile</button>
+            <button class='btn_more'><i class="fa-solid fa-pen"></i>Edit Info</button>
         </div>
         <div class="info">
             <span>Name <br>
@@ -61,12 +60,16 @@ $userdata = $_SESSION['userdata'];
             <span>Email <br>
                 <div class="data"><?php echo $userdata['Email']; ?></div>
             </span>
-            <span>Address <br>
-                <div class="data" id="Address"><?php echo $userdata['Address']; ?></div>
-            </span>
-            <span>Verified <br>
-                <div class="data"> True</div>
-            </span>
+            <div class="dataCover">
+
+                <span>Address <br>
+                    <div class="data" id="Address"><?php echo $userdata['Address']; ?></div>
+                </span>
+                <span>Verified <br>
+                    <div class="data"><?php echo ($userdata['Verified'] === 1) ? 'True' : 'False'; ?>
+                    </div>
+                </span>
+            </div>
         </div>
     </main>
     <!-- POP-UP FORUM -->

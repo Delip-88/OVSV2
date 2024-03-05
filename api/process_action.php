@@ -14,7 +14,7 @@ if (isset($_POST['accept'])) {
         $user_data = mysqli_fetch_assoc($result);
 
         // Insert the row into the 'validUser' table
-        $insert_query = "INSERT INTO validUser (Full_Name,DOB,Age, Number, Password, Email, Address,Image, Role, Status) VALUES (
+        $insert_query = "INSERT INTO validUser (Full_Name,DOB,Age, Number, Password, Email, Address,Image, Role, Status,Verified) VALUES (
             '{$user_data['Full_Name']}',
             '{$user_data['DOB']}',
             '{$user_data['Age']}',
@@ -23,8 +23,9 @@ if (isset($_POST['accept'])) {
             '{$user_data['Email']}',
             '{$user_data['Address']}',
             '{$user_data['Image']}',
-            '{$user_data['Role']}',
-            'not voted'
+            'user',
+            'not voted',
+            1
         )";
 
         mysqli_query($connect, $insert_query);

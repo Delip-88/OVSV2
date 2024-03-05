@@ -57,7 +57,7 @@ function displayElectionSections($connect, $userId, $elections)
             <ul>
                 <li><a href="personalInfo.php">Personal Info</a></li>
                 <li><a href="" class='active'>Elections</a></li>
-                <li><a href="">Results</a></li>
+                <li><a href="results.php">Results</a></li>
             </ul>
             <div class='welcome'>
                 <h3><span id='user'><?php echo $userdata['Full_Name'] ?></span></h3>
@@ -101,8 +101,6 @@ function displayElectionSections($connect, $userId, $elections)
                     $candidatesArray = [];
                     while ($rowCandidate = mysqli_fetch_assoc($resultCandidates)) {
                         $candidatesArray[] = $rowCandidate;
-                        print_r($candidatesArray);
-
                     }
                     // Check if the user has already voted in this election
                     $hasVoted = checkUserVote($connect, $userId, $electionId);
@@ -126,7 +124,7 @@ function displayElectionSections($connect, $userId, $elections)
 
                         echo "</div>";
 
-                        if (!$hasVoted) {
+                        if (!$hasVoted && ($userdata['Verified'] === 1)) {
                             // Display the voting section only if the user has not voted in this election
                             echo "<div class='voteSection'>";
                             echo "<form method='post' action='../../api/vote.php'>";
@@ -143,6 +141,9 @@ function displayElectionSections($connect, $userId, $elections)
                             echo "<button type='submit' class='voteBtn'>Submit</button>";
                             echo "</form>";
                             echo "</div>";
+
+                        } else if ($userdata['Verified'] === 0) {
+                            echo "<div class = 'pendinguser'> You are not a Valid voter ,yet </div>";
                         } else {
                             echo "<div class='alreadyVoted'>You have already voted in this election.</div>";
                         }

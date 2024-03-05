@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
  * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
    /* font-family: sans-serif; */
-   font-family: 'Times New Roman', Times, serif;
+   /* font-family: 'Times New Roman', Times, serif; */
+   font-family:'Raleway',sans-serif;
  }
 
  :root {
@@ -13,6 +15,7 @@
   --boxcolor : rgba(143, 140, 140, 0.356);
   --sample2:rgb(0 0 0 / 30%);
   --sample3:rgb(0 0 0 / 95%);
+  --defPadding: 20px 50px;
  }
 
 /* Define scrollbar width and color */
@@ -91,7 +94,8 @@
  }
 
  #logout:hover {
-  background-color: rgba(8, 59, 80, 0.897);
+  /* background-color: rgba(8, 59, 80, 0.897); */
+  background-color: #0a0a0a;
 }
 
 .cancel:hover{
@@ -141,18 +145,19 @@ main{
   padding: 10px;
 }
 .profile{
-  width: 70%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 60px;
   position: relative;
 }
 
 button{
   border: none;
   outline: none;
+  padding: 7px 12px;
 }
 
 .profile button, #cbtn{
@@ -163,12 +168,16 @@ button{
   color: white;
   
 }
+.fa-pen{
+  color: white;
+}
+
 
 #cbtn{
   font-size: 15px;
 }
 .fa-solid{
-  color: var(--topic-color);
+  color: white;
   margin-right: 10px;
   text-align: center ;
   cursor: pointer;
@@ -179,9 +188,7 @@ button{
   font-size: larger;
   left: 10%;
 }
-.profile button:last-child{
-  background-color: transparent;
-}
+
 .info{
   width:100%;
   display: flex;
@@ -196,8 +203,22 @@ button{
   color: white;
 }
 
-.eTitle{
-  color: black;
+.dataCover{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.closedElections{
+  margin-top: 10px;
+}
+.result{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+padding: 10px;
+border-radius: 5px;
+background-color: var(--boxcolor);
 }
  #title {
    color: white;
@@ -282,7 +303,7 @@ button{
 
 h3{
   font-size: 22px;
-  padding: 10px;
+  padding-top: 10px;
 }
  .cardContainerCover {
   background-color: var(--boxcolor);
@@ -358,7 +379,10 @@ h3{
  }
 
  .elections {
-   padding: 30px;
+   padding: var(--defPadding);
+   display: flex;
+   flex-direction: column;
+  gap: 5px;
  }
 
  .user-image {
@@ -433,8 +457,11 @@ h3{
  .alreadyVoted {
    color: rgba(4, 194, 4, 0.979);
    padding: 5px;
- }
-
+  }
+  .pendinguser{
+    color: yellow;
+    padding: 5px;
+}
  .card .img img {
    width: 100%;
    height: 100%;
@@ -447,7 +474,6 @@ h3{
    font-size: larger;
    padding-left: 5%;
    margin-top: 10px;
-
  }
 
  .pop_box,
@@ -462,7 +488,7 @@ h3{
    border-radius: 10px;
    box-shadow: 2px 3px 4px rgb(105, 88, 88);
    position: absolute;
-   top: 50%;
+   top: 40%;
    left: 50%;
    right: 50%;
    transform: translate(-50%, -50%);
@@ -494,7 +520,6 @@ h3{
    background-color: rgba(20, 148, 20, 0.979);
 
  }
-
  .cancel,
  #btnC {
    outline: none;
@@ -502,11 +527,23 @@ h3{
    padding: 7px 12px;
    margin-left: 15px;
    border-radius: 6px;
-
    cursor: pointer;
    transition: transform 100ms ease;
+   text-transform: capitalize;
  }
 
+
+ .resultData{
+  padding: var(--defPadding);
+
+ }
+ .resultData h2{
+  font-size: 22px;
+ }
+
+ .result h3{
+  font-size: 20px;
+ }
 
  @media only screen and (max-width:800px) {
    .container {

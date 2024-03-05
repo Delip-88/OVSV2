@@ -50,7 +50,7 @@ move_uploaded_file($tmp_name, "../uploads/$image");
 
 // Use prepared statement to prevent SQL injection
 $hash = password_hash($password, PASSWORD_DEFAULT);
-$query = "INSERT INTO pendingusers(Full_Name,DOB,Age, Number, Password, Email, Address, Image, Role, Status) VALUES (?,?,?, ?, ?, ?, ?, ?, 'user', 'pending')";
+$query = "INSERT INTO pendingusers(Full_Name,DOB,Age, Number, Password, Email, Address, Image, Role, Verified) VALUES (?,?,?, ?, ?, ?, ?, ?, 'user', 0)";
 $stmt = mysqli_prepare($connect, $query);
 mysqli_stmt_bind_param($stmt, 'ssssssss', $name, $dob, $age, $number, $hash, $email, $address, $image);
 $result = mysqli_stmt_execute($stmt);

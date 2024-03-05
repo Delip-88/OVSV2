@@ -44,12 +44,6 @@ infoform.addEventListener("submit", (e) => {
     messages.push("Number must be 10 digits");
   }
 
-  // First digit of the number validation
-  let pattern = /^9/;
-  if (!pattern.test(num.value)) {
-    messages.push("First digit of the number should be 9");
-  }
-
   // Display number error messages
   if (messages.length > 0) {
     e.preventDefault();

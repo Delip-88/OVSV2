@@ -62,7 +62,7 @@ if (!$result) {
                                 echo "<td>{$row['Number']}</td>";
                                 echo "<td>{$row['Email']}</td>";
                                 echo "<td>{$row['Address']}</td>";
-                                echo "<td>{$row['Status']}</td>";
+                                echo "<td>{$row['Role']}</td>";
                                 echo "<td>
                         <form action='../api/process_action.php' method='post' class='btns'>
                             <input type='hidden' name='user_id' value='{$row['Id']}'>
