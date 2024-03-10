@@ -245,14 +245,13 @@ background-color: var(--boxcolor);
    text-align: center;
  }
 
- #adC {
-   display: flex;
-   justify-content: center;
-   align-items: left;
-   flex-direction: column;
- }
+.messagejs{
+font-size: 12px;
+color: red;
+font-weight: 600;
+}
 
- #adC input,
+ .pop_box input,
  .pop_box2 input {
    outline: none;
    border: none;
@@ -443,6 +442,7 @@ h3{
    border-radius: 8px;
    border: 1px solid red;
    color: red;
+   font-weight: 700;
 
  }
 
@@ -483,10 +483,9 @@ h3{
    justify-content: flex-start;
    flex-direction: column;
    gap: 5px;
-   background-color: #b8b8b8ce;
+   background-color: #b8b8b8ed;
    padding: 20px 30px;
    border-radius: 10px;
-   box-shadow: 2px 3px 4px rgb(105, 88, 88);
    position: absolute;
    top: 40%;
    left: 50%;

@@ -7,13 +7,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $address = $_POST['address'];
     $number = $_POST['number'];
 
-    $query = "UPDATE validuser SET Full_Name='$name', Address='$address', Number='$number' WHERE Id='$userId'";
-    $update = mysqli_query($connect, $query);
+    // Use prepared statement to prevent SQL injection
+    $query = "UPDATE users SET Full_Name=?, Address=?, Number=? WHERE Id=?";
+    $stmt = mysqli_prepare($connect, $query);
+    mysqli_stmt_bind_param($stmt, 'sssi', $name, $address, $number, $userId);
+    $update = mysqli_stmt_execute($stmt);
 
     if ($update) {
         // Fetch updated user data from the database
-        $query = "SELECT * FROM validuser WHERE Id='$userId'";
-        $result = mysqli_query($connect, $query);
+        $query = "SELECT * FROM users WHERE Id=?";
+        $stmt = mysqli_prepare($connect, $query);
+        mysqli_stmt_bind_param($stmt, 'i', $userId);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
         $updatedUserData = mysqli_fetch_assoc($result);
 
         // Send the updated user data as a JSON response

@@ -12,9 +12,9 @@ function showAlertAndGoBack($message)
 
 function isEmailAlreadyRegistered($connect, $email)
 {
-    $query = "SELECT COUNT(*) as count FROM pendingusers WHERE email = ? UNION SELECT COUNT(*) as count FROM validuser WHERE email = ?";
+    $query = "SELECT COUNT(*) as count FROM users WHERE email = ? ";
     $stmt = mysqli_prepare($connect, $query);
-    mysqli_stmt_bind_param($stmt, 'ss', $email, $email);
+    mysqli_stmt_bind_param($stmt, 's', $email);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
@@ -50,7 +50,7 @@ move_uploaded_file($tmp_name, "../uploads/$image");
 
 // Use prepared statement to prevent SQL injection
 $hash = password_hash($password, PASSWORD_DEFAULT);
-$query = "INSERT INTO pendingusers(Full_Name,DOB,Age, Number, Password, Email, Address, Image, Role, Verified) VALUES (?,?,?, ?, ?, ?, ?, ?, 'user', 0)";
+$query = "INSERT INTO users(Full_Name,DOB,Age, Number, Password, Email, Address, Image, Role, Verified) VALUES (?,?,?, ?, ?, ?, ?, ?, 'user', 0)";
 $stmt = mysqli_prepare($connect, $query);
 mysqli_stmt_bind_param($stmt, 'ssssssss', $name, $dob, $age, $number, $hash, $email, $address, $image);
 $result = mysqli_stmt_execute($stmt);

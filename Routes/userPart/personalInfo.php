@@ -78,16 +78,18 @@ $userdata = $_SESSION['userdata'];
         <small id='error'></small>
 
         <hr>
-        <form action="../../api/updateDetails.php" method="post" class="pos" id="adC">
+        <form action="../../api/updateDetails.php" method="post" class="pos form" id="adC">
             <br>
             <label for="name">Name:</label>
-            <input type="text" name="name" id="editName" value=''>
+            <input type="text" name="name" id="editName" onkeyup="nameValid(this.value)" value=''>
+            <div class="messagejs namemsg"></div>
             <br>
             <label for="address">Address:</label>
             <input type="text" name="address" id="editAddress" value=''>
             <br>
             <label for="number">Number:</label>
-            <input type="text" name="number" id="editNumber" value=''>
+            <input type="text" name="number" id="editNumber" onkeyup="numberValid(this.value)" value=''>
+            <div class="messagejs numbermsg"></div>
             <br>
             <div class="btns">
                 <input type="hidden" name="uid" value="<?php echo $userdata['Id'] ?>">
@@ -96,22 +98,25 @@ $userdata = $_SESSION['userdata'];
             </div>
         </form>
     </div>
-    <div class="pop_box2" id="">
+    <div class="pop_box2">
         <h2>Edit</h2>
         <hr>
         <small id='passwordError'></small>
-        <form action="../../api/passwordChange.php" method="post" class="pos" id="form">
+        <form action="../../api/passwordChange.php" method="post" class="form">
             <br>
             <label for="password">Current Pasword:</label>
             <input type="text" name="password" id="password" required>
+            <div class="messagejs"></div>
             <br>
             <br>
             <label for="newPassword">New Password:</label>
-            <input type="text" name="newPassword" id="newPassword" required>
+            <input type="text" name="newPassword" id="newPassword" onkeyup="passwordValid(this.value)" required>
+            <div class="messagejs passwordmsg"></div>
             <br>
             <br>
             <label for="rePassword">Confirm Password:</label>
-            <input type="text" name="rePassword" id="rePassword" required>
+            <input type="text" name="rePassword" id="rePassword" onkeyup="cpasswordValid()" required>
+            <div class="messagejs cpasswordmsg"></div>
             <br>
             <br>
             <div class="btns">

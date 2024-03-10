@@ -8,7 +8,7 @@ include("../api/connect.php");
 $userdata = $_SESSION['userdata'];
 
 // Fetch user data from the database
-$query = "SELECT * FROM pendingusers";
+$query = "SELECT * FROM users WHERE Verified = 0";
 $result = mysqli_query($connect, $query);
 
 // Check if the query was successful

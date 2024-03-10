@@ -162,7 +162,7 @@ ul span {
 }
 
 #logout:hover {
-  background-color: rgba(8, 59, 80, 0.897);
+  background-color: black;
 }
 table {
   border-collapse: collapse;

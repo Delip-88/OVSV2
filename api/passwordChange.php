@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $newPassword = $_POST['newPassword'];
 
     // Retrieve user details
-    $queryToCheck = "SELECT * FROM validuser WHERE id='$userId'";
+    $queryToCheck = "SELECT * FROM users WHERE id='$userId'";
     $result = $connect->query($queryToCheck);
 
     if ($result->num_rows == 1) {
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $hash = password_hash($newPassword, PASSWORD_DEFAULT);
 
             // Update query for password change
-            $updateQuery = "UPDATE validuser SET Password='$hash', Full_Name='{$row['Full_Name']}', Address='{$row['Address']}', Number='{$row['Number']}' WHERE Id='$userId'";
+            $updateQuery = "UPDATE users SET Password='$hash', Full_Name='{$row['Full_Name']}', Address='{$row['Address']}', Number='{$row['Number']}' WHERE Id='$userId'";
             $connect->query($updateQuery);
 
             // Redirect after successful update

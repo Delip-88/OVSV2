@@ -9,7 +9,7 @@ $userdata = $_SESSION['userdata'];
 
 // Fetch user data from the database
 include('../api/connect.php');
-$query = "SELECT * FROM validuser";
+$query = "SELECT * FROM users WHERE Verified = 1";
 $result = mysqli_query($connect, $query);
 
 // Check if the query was successful

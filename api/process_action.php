@@ -7,32 +7,16 @@ if (isset($_POST['accept'])) {
     $user_id = $_POST['user_id'];
 
     // Fetch user data
-    $query = "SELECT * FROM pendingusers WHERE Id = $user_id";
+    $query = "SELECT * FROM users WHERE Id = $user_id";
     $result = mysqli_query($connect, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
         $user_data = mysqli_fetch_assoc($result);
 
-        // Insert the row into the 'validUser' table
-        $insert_query = "INSERT INTO validUser (Full_Name,DOB,Age, Number, Password, Email, Address,Image, Role, Status,Verified) VALUES (
-            '{$user_data['Full_Name']}',
-            '{$user_data['DOB']}',
-            '{$user_data['Age']}',
-            '{$user_data['Number']}',
-            '{$user_data['Password']}',
-            '{$user_data['Email']}',
-            '{$user_data['Address']}',
-            '{$user_data['Image']}',
-            'user',
-            'not voted',
-            1
-        )";
+        // Verified = true
+        $update_query = "UPDATE users SET Verified= 1 WHERE Id= $user_id";
 
-        mysqli_query($connect, $insert_query);
-
-        // Delete the row from the 'pendingusers' table
-        $election_delete_query = "DELETE FROM pendingusers WHERE Id = $user_id";
-        mysqli_query($connect, $election_delete_query);
+        mysqli_query($connect, $update_query);
     }
 
     header("Location: ../Routes/pendingVoter.php"); // Redirect to the same page after action
@@ -46,11 +30,11 @@ if (isset($_POST['accept'])) {
 
     switch ($originating_page) {
         case 'pendingVoter':
-            deleteImageAndRow($connect, $user_id, 'pendingusers', "../uploads/", "../Routes/pendingVoter.php");
+            deleteImageAndRow($connect, $user_id, 'users', "../uploads/", "../Routes/pendingVoter.php");
             break;
 
         case 'voter':
-            deleteImageAndRow($connect, $user_id, 'validuser ', "../uploads/", "../Routes/voter.php");
+            deleteImageAndRow($connect, $user_id, 'users ', "../uploads/", "../Routes/voter.php");
             break;
 
         case 'candidate':
