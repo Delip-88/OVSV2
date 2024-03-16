@@ -227,7 +227,7 @@ form button,
 
 .accept,
 .more,
-#btnC, #applyChangesBtn {
+#btnC, #applyChangesBtn, .submit {
   padding: 7 11px;
   border-radius: 6px;
   background-color: rgb(23, 173, 23);
@@ -259,7 +259,7 @@ form button,
 
 .accept:hover,
 .more:hover,
-#btnC:hover, #applyChangesBtn:hover {
+#btnC:hover, #applyChangesBtn:hover, .submit:hover {
   background-color: rgb(25, 129, 25);
 }
 
@@ -309,7 +309,22 @@ form button,
   aspect-ratio: 1/1;
   overflow: hidden;
 }
+.add input{
+  padding: 10px 12px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 100%;
+}
 
+.cover{
+  flex: 1;
+}
+.add{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 #addC {
   display: flex;
   justify-content: space-around;
@@ -393,11 +408,16 @@ textarea {
 #title {
   text-align: center;
 }
-
+.messagejs{
+  font-size: 12px;
+  color: red;
+  }
 #candidate-card {
   display: flex;
   flex-direction: column;
 }
+
+
 
 select {
   padding: 4px 20px;
@@ -468,7 +488,11 @@ main{
   padding: 20px 50px;
   margin-top: 10px;
 }
-
+#image{
+  background-color: white;
+  padding: 10px 12px;
+  border-radius: 5px;
+}
 .result{
   background-color: rgba(143, 140, 140, 0.356);
   padding: 10px;

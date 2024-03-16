@@ -5,7 +5,7 @@ if ($_SESSION['userdata']['Role'] !== 'admin') {
   exit;
 }
 
-include("../api/connect.php");
+include ("../api/connect.php");
 $userdata = $_SESSION['userdata'];
 
 // Fetch user data from the database
@@ -14,7 +14,7 @@ $result = mysqli_query($connect, $query);
 
 // Check if the query was successful
 if (!$result) {
-  die("Query failed: " . mysqli_error($connect));
+  die ("Query failed: " . mysqli_error($connect));
 }
 ?>
 <!DOCTYPE html>

@@ -36,7 +36,10 @@ if (!$result) {
         <nav>
 
             <div class="main">
-                <h3>User List</h3>
+                <div class="addVoter">
+                    <h3>Voter List</h3>
+                    <button class="more btn_more"> Add Voter</button>
+                </div>
                 <hr>
                 <div class="table-container">
 
@@ -83,9 +86,47 @@ if (!$result) {
             </div>
         </nav>
     </div>
+    <div class="addMore pop_box" id="modal">
+        <form action="../api/addVoter.php" id="form" method="post" enctype="multipart/form-data" class="add">
+            <h3>Registration</h3>
+            <div class="cover">
+                <input type="text" name="name" id="name" onkeyup="nameValid()" required
+                    placeholder="Enter your Full Name " />
+                <div class="messagejs namemsg"></div>
+            </div>
+            <label for="dob">DOB :</label>
+            <input type="date" name="dob" id="dob" max="2010-01-01" required placeholder="Enter your date of birth" />
+            <input type="hidden" name="age" id="age" readonly />
+            <input type="hidden" name="age" readonly>
+            <div class="cover">
+                <input type="number" name="number" id="number" onkeyup="numberValid()" required
+                    placeholder="Enter your phone number" />
+                <div class="messagejs numbermsg"></div>
+            </div>
 
+            <div class="cover">
+                <input type="password" name="password" id="password" onkeyup="passwordValid()"
+                    placeholder="Enter new password" />
+                <div class="messagejs passwordmsg"></div>
+            </div>
+
+            <input type="email" name="email" id="email" required placeholder="Enter your email" />
+
+            <input type="text" name="address" id="address" required placeholder="Enter your address" />
+            <br>
+            <label for="image">Your Passport Size Photo :</label>
+            <input type="file" name="image" id="image" class="uploadImage" accept=".jpg, .jpeg, .png" required />
+            <div class="btns">
+                <button type="submit" id="submit" class="submit">Submit</button>
+                <button type="reset" class="cancel btn_cancel">Cancel</button>
+
+            </div>
+        </form>
+        </form>
+    </div>
     <script src="js/script.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/registerValidation.js"></script>
 
 </body>
 

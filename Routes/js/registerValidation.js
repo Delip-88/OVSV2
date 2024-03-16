@@ -75,13 +75,13 @@ function numberValid() {
 }
 
 //Submit prevention
-// const btnSubmit = document.getElementById("submit");
-// const formsubmit = document.querySelector("#form");
-// formsubmit.addEventListener("submit", (e) => {
-//   const messages = document.querySelectorAll(".messagejs");
-//   messages.forEach((message) => {
-//     if (message.textContent.length > 0) {
-//       e.preventDefault();
-//     }
-//   });
-// });
+const btnSubmit = document.getElementById("submit");
+const formsubmit = document.querySelector("#form");
+formsubmit.addEventListener("submit", (e) => {
+  const messages = document.querySelectorAll(".messagejs");
+  messages.forEach((message) => {
+    if (message.textContent.length > 0) {
+      e.preventDefault();
+    }
+  });
+});
