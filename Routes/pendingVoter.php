@@ -4,7 +4,7 @@ if ($_SESSION['userdata']['Role'] !== 'admin') {
     header('location: loginPage.html');
     exit;
 }
-include("../api/connect.php");
+include ("../api/connect.php");
 $userdata = $_SESSION['userdata'];
 
 // Fetch user data from the database
@@ -13,7 +13,7 @@ $result = mysqli_query($connect, $query);
 
 // Check if the query was successful
 if (!$result) {
-    die("Query failed: " . mysqli_error($connect));
+    die ("Query failed: " . mysqli_error($connect));
 }
 ?>
 
@@ -46,6 +46,7 @@ if (!$result) {
                                 <th>Image</th>
                                 <th>Full Name</th>
                                 <th>Number</th>
+                                <th>Age</th>
                                 <th>Email</th>
                                 <th>Address</th>
                                 <th>Role</th>
@@ -60,6 +61,7 @@ if (!$result) {
                                 echo "<td class='img-wrapper'><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
                                 echo "<td>{$row['Full_Name']}</td>";
                                 echo "<td>{$row['Number']}</td>";
+                                echo "<td>{$row['Age']}</td>";
                                 echo "<td>{$row['Email']}</td>";
                                 echo "<td>{$row['Address']}</td>";
                                 echo "<td>{$row['Role']}</td>";

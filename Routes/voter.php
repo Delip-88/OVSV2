@@ -8,13 +8,13 @@ if ($_SESSION['userdata']['Role'] !== 'admin') {
 $userdata = $_SESSION['userdata'];
 
 // Fetch user data from the database
-include('../api/connect.php');
+include ('../api/connect.php');
 $query = "SELECT * FROM users WHERE Verified = 1";
 $result = mysqli_query($connect, $query);
 
 // Check if the query was successful
 if (!$result) {
-    die("Query failed: " . mysqli_error($connect));
+    die ("Query failed: " . mysqli_error($connect));
 }
 ?>
 <!DOCTYPE html>
@@ -47,6 +47,7 @@ if (!$result) {
                                 <th>Image</th>
                                 <th>Full Name</th>
                                 <th>Number</th>
+                                <th>Age</th>
                                 <th>Email</th>
                                 <th>Address</th>
                                 <th>Role</th>
@@ -61,6 +62,7 @@ if (!$result) {
                                 echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
                                 echo "<td>{$row['Full_Name']}</td>";
                                 echo "<td>{$row['Number']}</td>";
+                                echo "<td>{$row['Age']}</td>";
                                 echo "<td>{$row['Email']}</td>";
                                 echo "<td>{$row['Address']}</td>";
                                 echo "<td>{$row['Role']}</td>";

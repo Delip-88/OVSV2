@@ -13,10 +13,7 @@
   <div class="container">
     <h2>Login</h2>
     <form action="../api/login.php" method="post">
-      <select name="role" id="role">
-        <option value="admin">Admin</option>
-        <option value="user" selected>user</option>
-      </select>
+      <input type="hidden" name="role" value="user">
       <small>Email</small>
       <input type="email" name="email" id="email" required />
       <small>Password</small>
