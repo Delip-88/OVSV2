@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['userdata']['Role'] !== 'admin') {
-    header('location: ../Routes/loginPage.html');
+    header('location: ../Routes/index.html');
     exit;
 }
 

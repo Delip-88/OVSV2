@@ -5,7 +5,7 @@ session_start();
 
 // Redirect if user is not logged in or doesn't have 'user' role
 if (!isset($_SESSION['userdata']) || $_SESSION['userdata']['Role'] !== 'user') {
-    header('location: ../../Routes/loginPage.html');
+    header('location: ../../Routes/index.html');
     exit(); // Stop further execution
 }
 
@@ -117,8 +117,8 @@ function displayElectionSections($connect, $userId, $elections)
                             echo "<div class='user-image'>";
                             echo "<img src='../../uploads/{$rowCandidate['Image']}' alt='Candidate Image'>";
                             echo "</div>";
-                            echo "<strong>Full Name: <span class='username'>{$rowCandidate['Full_Name']}</span></strong>";
-                            echo "<small>Description:<span class='username'> {$rowCandidate['Description']}</span></small>";
+                            echo "<p>Full Name<br> <span class='username'>{$rowCandidate['Full_Name']}</span></p>";
+                            echo "<p>Description:<br><span class='username'> {$rowCandidate['Description']}</span></p>";
                             echo "</div>";
                         }
 
@@ -127,19 +127,19 @@ function displayElectionSections($connect, $userId, $elections)
                         if (!$hasVoted && ($userdata['Verified'] === 1)) {
                             // Display the voting section only if the user has not voted in this election
                             echo "<div class='voteSection'>";
-                            echo "<form method='post' action='../../api/vote.php'>";
+                            echo "<form method='post' action='../../api/vote.php' id='{$rowElection['Title']}'>";
                             echo "<label for='candidateSelection' class='labelVote'>Vote : </label> ";
                             echo "<select class='candidateSelection' name='candidateSelection' required>";
-                            echo "<option  disabled > --Select A Candidate --</option>";
+                            echo "<option disabled> --Select A Candidate--</option>";
                             // Display candidate options in the dropdown
                             foreach ($candidatesArray as $rowCandidate) {
-                                echo "<option value='" . $rowCandidate['Id'] . "' >" . $rowCandidate['Full_Name'] . "</option>";
+                                echo "<option value='" . $rowCandidate['Id'] . "'>" . $rowCandidate['Full_Name'] . "</option>";
                             }
                             echo "</select>";
                             echo "<input type='hidden' name='userId' value='$userId'>";
                             echo "<input type='hidden' name='electionId' value='$electionId'>";
-                            echo "<button type='submit' class='voteBtn'>Submit</button>";
-                            echo "</form>";
+                            echo "<button type='submit' class='voteBtn' onclick=\"return confirmSubmission('{$rowElection['Title']}')\">Submit</button>";
+                            echo "</form>";                            
                             echo "</div>";
 
                         } else if ($userdata['Verified'] === 0) {
@@ -161,6 +161,7 @@ function displayElectionSections($connect, $userId, $elections)
 
         </div>
     </div>
+    <script src='../js/confirmation.js'></script>
 </body>
 
 </html>

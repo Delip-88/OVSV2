@@ -5,7 +5,7 @@ session_start();
 
 // Redirect to login page if the user is not logged in or doesn't have the 'user' role
 if (!isset($_SESSION['userdata']) || $_SESSION['userdata']['Role'] !== 'user') {
-    header('location: ../../Routes/loginPage.html');
+    header('location: ../../Routes/index.html');
     exit;
 }
 
@@ -52,7 +52,7 @@ function displayElectionSections($connect, $userId, $elections)
             <ul>
                 <li><a href="personalInfo.php">Personal Info</a></li>
                 <li><a href="election.php">Elections</a></li>
-                <li><a href="" class='active'>Results</a></li>
+                <li><a href="#" class='active'>Results</a></li>
             </ul>
             <div class='welcome'>
                 <h3><span id='user'><?php echo $userdata['Full_Name'] ?></span></h3>

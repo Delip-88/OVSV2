@@ -79,7 +79,7 @@ if (isset($_POST['accept'])) {
 
         default:
             // Default redirect if originating_page is not recognized
-            header("Location: ../Routes/loginPage.php");
+            header("Location: ../Routes/index.html");
             break;
     }
 }

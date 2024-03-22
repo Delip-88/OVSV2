@@ -57,7 +57,7 @@ $result = mysqli_stmt_execute($stmt);
 
 if ($result) {
     echo "<script>alert('Registration successful'); 
-    window.location.href='../Routes/loginPage.html';
+    window.location.href='../Routes/index.html';
     </script>";
 } else {
     echo "Some error occurred";

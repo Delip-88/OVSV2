@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['userdata']['Role'] !== 'admin') {
-  header('location: loginPage.html');
+  header('location: index.html');
   exit;
 }
 
@@ -86,7 +86,7 @@ if (!$result) {
 
                 // Populate the <select> element with options 
                 while ($row = $result->fetch_assoc()) {
-                  if ($row['Status'] == 'Ongoing') {
+                  if ($row['Status'] == 'Ongoing' || $row['Status']== 'Inactive') {
                     echo "<option value='" . $row['Title'] . "'>" . $row['Title'] . "</option>";
                   }
                 }
