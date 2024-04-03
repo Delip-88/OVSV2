@@ -25,6 +25,8 @@ if (!$result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -35,32 +37,48 @@ if (!$result) {
 
         <nav>
             <div class="main">
+              <div class="addVoter">
                 <h3>Candidates </h3>
+                <input type="text" name="searchInput" id="searchInput2" placeholder="Search by Position">
+                <button class="more btn_more">Add Candidate</button>
+              </div>
                 <hr>
-                <div class="info">
-
+                <div class="table-container">
+                  <table>
+                    <thead>
+                      <tr>
+                      <th>SN</th>
+                      <th>Image</th>
+                      <th>Full Name</th>
+                      <th>Position</th>
+                      <th>Description</th>
+                      <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="userData">
                     <?php
+                    $sn= 1;
                     while ($row = mysqli_fetch_assoc($result)) {
-                      echo "<div class='card'>";
-                      echo "<div class='userImage'><img class='user-image' src='../uploads/{$row['Image']}' alt='Image'></div>";
-                      echo "<span class='label'>Name : <span>{$row['Full_Name']}</span></span > ";
-                      echo "<span class='label'>Position : <span>{$row['Position']}</span></span > ";
-                      echo "<span class='label'>Description : <span>{$row['Description']}</span>  </span >";
-                      echo "
+                      echo "<tr>";
+                      echo "<td>{$sn}</td>";
+                      $sn++;
+                      echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='Image'></td>";
+                      echo " <td>{$row['Full_Name']}</td> ";
+                      echo " <td>{$row['Position']}</td> ";
+                      echo " <td>{$row['Description']}</td>";
+                      echo "<td>
               <form action='../api/process_action.php' method='post'>
                 <input type='hidden' name='user_id' value='{$row['Id']}'>
                 <input type='hidden' name='originating_page' value='candidate'>
                 <button type='submit' name='reject' class='reject'>Remove</button>
                </form>
+               </td>
               ";
-                      echo "</div>";
                     }
                     ?>
+                    </tbody>
+                  </table>
                 </div>
-
-                <button class="more btn_more">Add Candidate</button>
-
-
             </div>
         </nav>
     </div>
@@ -104,6 +122,7 @@ if (!$result) {
 
     <script src="js/script.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/search.js"></script>
 
 </body>
 

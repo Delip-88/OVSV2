@@ -21,6 +21,20 @@ editButtons.forEach((button) => {
     const stDate = eCard.querySelector(".stDate").textContent.trim(); // Trim whitespace
     const endDate = eCard.querySelector(".endDate").textContent.trim(); // Trim whitespace
     const electionId = eCard.querySelector('[name="eId"]').value;
-    openEditPopup(electionId, title, stDate, endDate);
+    const status = eCard.querySelector('.status').textContent.trim();
+    if(status == 'Closed'){
+      button.disabled = true;
+      button.style.cursor= 'not-allowed';
+      button.addEventListener('mouseover', function() {
+    this.classList.add('disabled-cursor');
+  });
+
+  button.addEventListener('mouseout', function() {
+    this.classList.remove('disabled-cursor');
+  });
+    }else{
+
+      openEditPopup(electionId, title, stDate, endDate);
+    }
   });
 });

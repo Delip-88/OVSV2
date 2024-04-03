@@ -24,7 +24,15 @@ function fetchElections($connect, $status)
     }
     return $result;
 }
-
+function hasUpcomingElections($connect) {
+    $query = "SELECT COUNT(*) AS count FROM election WHERE Status ='inactive'";
+    $result = mysqli_query($connect, $query);
+    if (!$result) {
+        die("Error fetching upcoming elections: " . mysqli_error($connect));
+    }
+    $row = mysqli_fetch_assoc($result);
+    return $row['count'] > 0;
+}
 // Function to display election sections
 function displayElectionSections($connect, $userId, $elections)
 {
@@ -66,15 +74,17 @@ function displayElectionSections($connect, $userId, $elections)
         </nav>
     </header>
     <div class="elections">
-        <h3>Upcoming Elections : </h3>
-        <hr>
-
         <?php
-        // Fetch upcoming elections
-        $resultUpcomingElection = fetchElections($connect, 'inactive');
-        echo "<div class='upcomingElection'>";
-        displayElectionSections($connect, $userId, $resultUpcomingElection);
-        echo "</div>";
+        // Check if there are upcoming elections
+        if (hasUpcomingElections($connect)) {
+            // Fetch upcoming elections
+            $resultUpcomingElection = fetchElections($connect, 'inactive');
+            echo "<h3>Upcoming Elections :</h3>";
+            echo "<hr>";
+            echo "<div class='upcomingElection'>";
+            displayElectionSections($connect, $userId, $resultUpcomingElection);
+            echo "</div>";
+        }
         ?>
 
         <h3>Ongoing Elections : </h3>

@@ -25,6 +25,8 @@ if (!$result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -38,6 +40,7 @@ if (!$result) {
             <div class="main">
                 <div class="addVoter">
                     <h3>Voter List</h3>
+                    <input type="text" name="searchInput" id="searchInput" placeholder="Search by Name">
                     <button class="more btn_more"> Add Voter</button>
                 </div>
                 <hr>
@@ -46,7 +49,7 @@ if (!$result) {
                     <table>
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>SN</th>
                                 <th>Image</th>
                                 <th>Full Name</th>
                                 <th>Number</th>
@@ -57,11 +60,13 @@ if (!$result) {
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="userData">
                             <?php
+                            $sn=1;
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
-                                echo "<td>{$row['Id']}</td>";
+                                echo "<td>{$sn}</td>";
+                                $sn++;
                                 echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
                                 echo "<td>{$row['Full_Name']}</td>";
                                 echo "<td>{$row['Number']}</td>";
@@ -70,12 +75,12 @@ if (!$result) {
                                 echo "<td>{$row['Address']}</td>";
                                 echo "<td>{$row['Role']}</td>";
                                 echo "<td>
-        <form action='../api/process_action.php' method='post'>
-            <input type='hidden' name='user_id' value='{$row['Id']}'>
-            <input type='hidden' name='originating_page' value='voter'>
-            <button type='submit' name='reject' class='reject'>Delete</button>
-        </form>
-      </td>";
+                                        <form action='../api/process_action.php' method='post'>
+                                            <input type='hidden' name='user_id' value='{$row['Id']}'>
+                                            <input type='hidden' name='originating_page' value='voter'>
+                                            <button type='submit' name='reject' class='reject'>Delete</button>
+                                        </form>
+                                    </td>";
                                 echo "</tr>";
                             }
                             ?>
@@ -127,6 +132,7 @@ if (!$result) {
     <script src="js/script.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/registerValidation.js"></script>
+    <script src="js/search.js"></script>
 
 </body>
 

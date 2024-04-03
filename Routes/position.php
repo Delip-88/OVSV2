@@ -38,9 +38,11 @@ if (!$result) {
         <nav>
 
             <div class="main">
-                <h3>Elections</h3>
+                <div class="addVoter">
+                    <h3>Elections</h3>
+                    <button class="more btn_more ">Create Election</button>
+                </div>
                 <hr>
-                <button class="more btn_more ">Create Election</button>
                 <div class="elections">
 
                     <?php

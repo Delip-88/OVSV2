@@ -27,3 +27,4 @@ function closeModal2() {
 
 btnShow2.addEventListener("click", openModal2);
 btnHide2.addEventListener("click", closeModal2);
+

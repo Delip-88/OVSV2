@@ -72,10 +72,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 30px;
+  padding: 5px 20px;
   color: white;
 }
-
 
 figure {
   width: 70px;
@@ -107,9 +106,8 @@ textarea {
   position: relative;
 }
 .main h3{
-
-  color
-  : white;
+  font-size: 20px;
+  color: white;
 }
 ul {
   height: 100%;
@@ -171,6 +169,7 @@ table {
 
 .table-container {
   overflow-x: auto;
+  padding: 4px;
 }
 
 th,
@@ -204,6 +203,11 @@ tr td:nth-child(2) {
   padding: 2px;
 }
 
+td form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #user {
   font-size: 15px;
@@ -229,17 +233,17 @@ form button,
 .more,
 #btnC, #applyChangesBtn, .submit {
   padding: 7 11px;
-  border-radius: 6px;
+  border-radius: 5px;
   background-color: rgb(23, 173, 23);
   color: white;
-  font-size: 15px;
+  font-size: 17px;
   transition: all 100ms ease;
 }
 
 #btnC {
   font-size: smaller;
 }
-#btnC input {
+#btnC input, #searchInput ,#searchInput2 {
   outline: none;
   border: none;
 }
@@ -397,11 +401,6 @@ textarea {
 .edit {
   align-self: baseline;
 }
-.more {
-  position: absolute;
-  right: 5%;
-  top: 2%;
-}
 
 .namewidth {
   width: 150px;
@@ -555,7 +554,19 @@ main{
   object-fit: cover;
 }
 
-
+.addVoter{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  line-height: 35px;
+}
+#searchInput, #searchInput2{
+  margin-left: auto;
+  border-radius: 3px;
+  padding: 5px;
+  line-height: 10px;
+}
 .active {
   color: var(--topic-color);
   position: relative;
@@ -636,9 +647,7 @@ main{
   nav {
     flex-direction: column;
   }
-.more{
-  top: 0%;
-}
+
   #title {
     font-size: 20px;
   }

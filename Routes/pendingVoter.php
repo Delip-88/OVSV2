@@ -36,7 +36,10 @@ if (!$result) {
         <nav>
 
             <div class="main">
-                <h3>Pending User List</h3>
+                <div class="addVoter">
+                    <h3>Pending User List</h3>
+                    <input type="text" name="searchInput" id="searchInput" placeholder="Search by Name">
+                </div>
                 <hr>
                 <div class="table-container">
                     <table>
@@ -53,11 +56,13 @@ if (!$result) {
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="userData">
                             <?php
+                            $sn=1;
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
-                                echo "<td>{$row['Id']}</td>";
+                                echo "<td>{$sn}</td>";
+                                $sn++;
                                 echo "<td class='img-wrapper'><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
                                 echo "<td>{$row['Full_Name']}</td>";
                                 echo "<td>{$row['Number']}</td>";
@@ -85,6 +90,7 @@ if (!$result) {
 
     <script src="js/script.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/search.js"></script>
 
 </body>
 
