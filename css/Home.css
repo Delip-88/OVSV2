@@ -182,14 +182,14 @@ td{
   color: white;
 }
 
-th {
+.table-container th {
   background-color: #b1bfcf;
 }
-tr:nth-of-type(odd){
+.table-container tr:nth-of-type(odd){
   background-color: #13325567;
 
 }
-tr:nth-of-type(even) {
+.table-container tr:nth-of-type(even) {
   background-color: #b1bfcf67;
 }
 
@@ -209,6 +209,14 @@ td form{
   align-items: center;
 }
 
+#resultTable{
+  width: auto;
+  margin-right: auto;
+}
+
+#resultTable td{
+  text-align: center;
+}
 #user {
   font-size: 15px;
   color: rgb(51, 214, 51);

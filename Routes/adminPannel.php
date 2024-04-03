@@ -48,22 +48,6 @@ $userdata = $_SESSION['userdata'];
                                     }
                                     ?>
                                 </span></p>
-
-                            <p>Number Of Voters : <span>
-                                    <?php
-                                    $queryCountVoters = "SELECT COUNT(DISTINCT UserId) AS count FROM votes";
-                                    $resultquerycountVoters = mysqli_query($connect, $queryCountVoters);
-                                    if ($resultquerycountVoters) {
-                                      $erow = mysqli_fetch_assoc($resultquerycountVoters);
-                                      $erowCount = $erow['count'];
-                                      echo $erowCount;
-                                    } else {
-                                      echo "Error fetching data: " . mysqli_error($connect);
-                                    }
-
-                                    ?>
-
-                                </span></p>
                         </div>
                         <h2>Ongoing Elections : </h2>
                         <hr>
