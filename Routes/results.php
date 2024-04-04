@@ -72,7 +72,7 @@ $userdata = $_SESSION['userdata'];
 
         echo "<h4>Vote Counts:</h4>";
         echo "<table border='1' id='resultTable'>";
-        echo "<tr><th>Candidate Name</th><th>Vote Count</th><th>Vote Percentage</th></tr>";
+        echo "<tr><th>SN</th><th>Candidate Name</th><th>Vote Count</th><th>Vote Percentage</th></tr>";
 
         // Query to get vote counts and percentages for each candidate
         $queryCountEachCandidateVote = "SELECT c.Id AS CandidateId, c.Full_Name AS CandidateName, COUNT(v.CandidateId) AS VoteCount,
@@ -89,9 +89,11 @@ if ($result) {
     $highestVoteCount = 0;
     // Array to store winner(s) in case of a tie
     $winners = [];
-
+    $sn=1;
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
+        echo "<td>$sn</td>";
+        $sn++;
         echo "<td>{$row['CandidateName']}</td>";
         echo "<td>{$row['VoteCount']}</td>";
         echo "<td>{$row['VotePercentage']}%</td>";

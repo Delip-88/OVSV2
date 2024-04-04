@@ -11,15 +11,21 @@
 
 <body>
   <div class="container">
+    <div class="box">
+      <p> <span>"</span>  Join us today to play a vital role in shaping the future through secure and convenient digital voting. <span>"</span> </p>
+      <p>Already Have an account? <button><a href="index.html">LogIn</a></button></p>
+    </div>
     <form action="../api/register.php" id="form" method="post" enctype="multipart/form-data">
       <h3>Registration</h3>
       <div class="cover">
         <input type="text" name="name" id="name" onkeyup="nameValid()" required placeholder="Enter your Full Name " />
         <div class="messagejs namemsg"></div>
       </div>
-      <label for="dob">DOB :</label>
-      <input type="date" name="dob" id="dob" max="2010-01-01" required placeholder="Enter your date of birth" />
-      <input type="hidden" name="age" id="age" readonly />
+      <div class="cover">
+        <label for="dob">DOB :</label>
+        <input type="date" name="dob" id="dob" max="2010-01-01" required placeholder="Enter your date of birth" />
+        <input type="hidden" name="age" id="age" readonly />
+      </div>
 
       <div class="cover">
         <input type="number" name="number" id="number" onkeyup="numberValid()" required
@@ -37,12 +43,16 @@
           placeholder="Re-Enter your password" />
         <div class="messagejs cpasswordmsg"></div>
       </div>
-
-      <input type="email" name="email" id="email" required placeholder="Enter your email" />
-
-      <input type="text" name="address" id="address" required placeholder="Enter your address" />
-      <label for="image">Your Passport Size Photo :</label>
-      <input type="file" name="image" id="image" class="uploadImage" accept=".jpg, .jpeg, .png" required />
+      <div class="cover">
+        <input type="email" name="email" id="email" required placeholder="Enter your email" />
+      </div>
+      <div class="cover">
+        <input type="text" name="address" id="address" required placeholder="Enter your address" />
+      </div>
+      <div class="cover">
+        <label for="image">Your Passport Size Photo :</label>
+        <input type="file" name="image" id="image" class="uploadImage" accept=".jpg, .jpeg, .png" required />
+      </div>
       <button type="submit" id="submit">Submit</button>
     </form>
     <script defer src="js/registerValidation.js"></script>

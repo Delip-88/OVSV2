@@ -1,104 +1,144 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
- *{
-margin : 0;
-padding : 0; 
-box-sizing : border-box;
-font-family: 'Raleway',sans-serif;
- } 
-
- .container{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0; /* Optional: Remove any default margins */
+}
+body{
     width: 100%;
     height: 100vh;
-    background-image: url("../img/vote.jpg");
+    display: grid;
+    place-items: center;
+    background-color: rgb(0 0 0 / 94%);
+}
+.container {
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    width: 60%;
+    height: 80%;
+    border-radius: 6px;
+    overflow: hidden;
+}
 
- }
-
- form{
-    width: 25%;
+form {
+    flex: 1;
+    height: 100%;
     min-width: 230px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
     padding: 15px;
-    color: black;
-     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-     backdrop-filter: blur( 7px );
-     border-radius: 10px;
-     border: 1px solid rgba( 255, 255, 255, 0.18 );
- }
-label{
+    background-color: rgb(229, 229, 230);
+}
+
+.box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100%;
+    color: white;
+    flex-direction: column;
+}
+
+label {
     font-size: 15px;
     display: inline;
     font-weight: bold;
 }
-#image{
+
+#image {
     background-color: white;
     padding: 10px 12px;
     border-radius: 5px;
 }
-.cover{
+
+.cover {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
- form input{
-    padding: 10px 12px;
-    border: none;
+
+form input {
+    padding: 10px 30px;
+    width: 100%;
     outline: none;
-    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid rgb(179, 179, 179);
     flex: 1;
- }
- button{
+}
+
+button {
     all: unset;
     text-align: center;
-    background-color:#0083cfda;
+    background-color: #0061cfea;
     color: white;
     margin: auto;
     padding: 5px 40px;
-    border-radius:30px;
-    font-weight: 500;
+    border-radius: 30px;
     cursor: pointer;
- }
- button:hover{
-    background-color:#0679bbfa;
+    display: block;
+    font-size: 18px;
 
- }
- select{
-    all: unset;
-    border: 1px solid black;
-        border-radius: 5px;
-    padding: 5px;
-    color: black;
 }
-option{
-    font-size: large;
+button a{
+    color: white;
+    text-decoration: none;
 }
-.uploadImage{
+button:hover {
+    background-color: #0679bbfa;
+
+}
+
+.uploadImage {
     font-size: 12px;
     border: none;
     padding: 5px;
 }
-h3{
+
+h3 {
+    font-size: 30px;
     text-align: center;
     margin-bottom: 10px;
 }
-#form{
-    transition: all 150ms ease;
-}
 
 
-.messagejs{
-font-size: 12px;
-color: red;
+.messagejs {
+    font-size: 12px;
+    color: red;
 }
-#error{
+
+#error {
     font-size: 17px;
     color: red;
+}
+
+p {
+    text-transform: capitalize;
+    font-style: italic;
+    margin-top: 50px;
+    font-size: 20px;
+    text-align: center;
+    display: block  ;
+}
+
+span{
+    color: purple ;
+    font-size: 30px;
 }

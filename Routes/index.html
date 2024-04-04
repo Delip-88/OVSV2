@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <link rel="stylesheet" href="../css/login.css" />
-</head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="intro">
+          <h2>Online Voting System</h2>
+          <p>
+            <span>"</span> Welcome to our online voting system, where your voice matters. Join
+            us in shaping the future through secure and convenient digital
+            voting. <span>"</span>
+          </p>
+        </div>
 
-<body>
-  <div class="container">
-    <h2>Login</h2>
-    <form action="../api/login.php" method="post">
-      <input type="hidden" name="role" value="user">
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" required />
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" required />
-      <button type="submit" id="submit">LogIn</button>
-      <p>
-        Or <br /><a href="Register.html" style="color: blue; font-weight: bold">
-          Register</a>
-      </p>
-    </form>
-  </div>
-</body>
-
+      </div>
+      <div class="box">
+        <form action="../api/login.php" method="post">
+          <h2>Login</h2>
+          <input type="hidden" name="role" value="user" />
+          <input type="email" name="email" id="email" required   placeholder="Email"/>
+          <input type="password" name="password" id="password" required  placeholder="Password"/>
+          <button type="submit" id="submit">LogIn</button>
+          <p>Or <br/><strong> <a href="Register.html" >Register</a></strong>
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

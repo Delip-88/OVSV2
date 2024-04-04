@@ -11,16 +11,28 @@
 
 <body>
     <div class="container">
-        <h2>Login</h2>
-        <form action="../../api/login.php" method="post">
-            <input type="hidden" name="role" value="admin">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" required />
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required />
+        <div class="box">
+          <div class="intro">
+            <h2>Online Voting System</h2>
+            <p>
+              <span>"</span> Welcome to our online voting system, where your voice matters. Join
+              us in shaping the future through secure and convenient digital
+              voting. <span>"</span>
+            </p>
+          </div>
+  
+        </div>
+        <div class="box">
+          <form action="../../api/login.php" method="post">
+            <h2>Login</h2>
+            <input type="hidden" name="role" value="admin" />
+            <input type="email" name="email" id="email" required   placeholder="Email"/>
+            <input type="password" name="password" id="password" required  placeholder="Password"/>
             <button type="submit" id="submit">LogIn</button>
-        </form>
-    </div>
+            </p>
+          </form>
+        </div>
+      </div>
 </body>
 
 </html>
