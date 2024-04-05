@@ -84,7 +84,7 @@ form input {
     flex: 1;
 }
 
-button {
+button , p a{
     all: unset;
     text-align: center;
     background-color: #0061cfea;
@@ -95,14 +95,12 @@ button {
     cursor: pointer;
     display: block;
     font-size: 18px;
+    transition: all 200ms ease;
 
 }
-button a{
-    color: white;
-    text-decoration: none;
-}
-button:hover {
-    background-color: #0679bbfa;
+
+a:hover , #submit:hover{
+   background-color: #022b9bfa;
 
 }
 

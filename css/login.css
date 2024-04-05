@@ -67,12 +67,23 @@
     text-align: center;
     width: 100%;
     cursor: pointer;
+    transition: all 200ms ease;
+
+ }
+ form button:hover {
+   background-color: #022b9bfa;
 
  }
  form a{
     text-decoration: none;
     color: rgb(5, 129, 230);
     font-size: 23px;
+    transition: all 200ms ease;
+
+ }
+ form a:hover{
+   color: #022b9bfa;
+
  }
  p{
     text-align: center;

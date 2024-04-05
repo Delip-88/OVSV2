@@ -619,10 +619,14 @@ main{
   min-height: 200vh;
   overflow: visible;
 }
+ol{
+  list-style-type: decimal;
+}
 
 .sidebar li{
   padding: 0;
   border-bottom: 1px solid rgba(128, 128, 128, 0.678);
+  transition-delay: 600ms;
 }
 
 .sidebar li a {
