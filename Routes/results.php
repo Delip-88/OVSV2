@@ -135,7 +135,13 @@ $userdata = $_SESSION['userdata'];
         echo "</table>";
         echo "<div class='btns'>";
         echo "<button class='publishResult' onclick='return confirm(\"Are you sure?\")'> Publish Results </button> ";
-        echo "<button class='deleteResult' onclick='return confirm(\"Are you sure?\")'> Delete Results </button> ";
+        echo "<form method='post' action='../api/process_action.php'>";
+        echo "<input type='hidden' name='eId' value='{$eId}'>";
+        echo "<input type='hidden' name='Title' value='{$eTitle}'>";
+        echo "<input type='hidden' name='user_id' value='admin'>";
+        echo "<input type='hidden' name='originating_page' value='result'>";
+        echo "<button type='submit' name='reject' class='deleteResult' onclick='return confirm(\"Are you sure?\")'>Delete Result </button>";
+        echo "</form>";
         echo "</div>";
 
         echo "</div>";
@@ -145,7 +151,6 @@ $userdata = $_SESSION['userdata'];
 
 
         </main>
-
 
     </div>
     <script src="js/menu.js"></script>

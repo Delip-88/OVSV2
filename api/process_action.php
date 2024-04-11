@@ -40,6 +40,37 @@ if (isset($_POST['accept'])) {
         case 'candidate':
             deleteImageAndRow($connect, $user_id, 'candidate', "../uploads/", "../Routes/candidate.php");
             break;
+        case 'result':
+            $queryDeleteVotes="DELETE FROM votes WHERE ElectionId = $electionId";
+            $queryDeleteElection = "DELETE FROM election WHERE Id = $electionId";
+            $queryDeleteResults = "DELETE FROM results WhERE Election_Id = $electionId";
+            
+            // Delete the election record
+            if (mysqli_query($connect, $queryDeleteElection) && mysqli_query($connect,$queryDeleteVotes) && mysqli_query($connect,$queryDeleteResults))  {
+
+                // Delete candidate images associated with the election
+                $queryImage = "SELECT Image FROM candidate WHERE Position = '$electionTitle'";
+                $result = mysqli_query($connect, $queryImage);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $imgFileName = $row['Image'];
+                        $image_path = "../uploads/" . $imgFileName;
+                        if (file_exists($image_path)) {
+                            unlink($image_path);
+                        }
+                    }
+                }
+                // Delete candidates associated with the election
+                $delete_candidates_query = "DELETE FROM candidate WHERE Position = '$electionTitle'";
+                mysqli_query($connect, $delete_candidates_query);
+                // Redirect to the position page
+                header("Location: ../Routes/results.php");   
+            } else {
+                // Deletion of election record failed
+                echo "Deletion Failed: " . mysqli_error($connect);
+            }
+                break;
+
         case 'election':
             // Delete the election record
             $election_delete_query = "DELETE FROM election WHERE Id = $user_id";
