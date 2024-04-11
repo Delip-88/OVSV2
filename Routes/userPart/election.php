@@ -148,7 +148,7 @@ function displayElectionSections($connect, $userId, $elections)
                             echo "</select>";
                             echo "<input type='hidden' name='userId' value='$userId'>";
                             echo "<input type='hidden' name='electionId' value='$electionId'>";
-                            echo "<button type='submit' class='voteBtn' onclick=\"return confirmSubmission('{$rowElection['Title']}')\">Submit</button>";
+                            echo "<button type='submit' class='voteBtn' onclick='return confirm(\"Are you sure?\")'>Submit</button>";
                             echo "</form>";                            
                             echo "</div>";
 
@@ -171,7 +171,6 @@ function displayElectionSections($connect, $userId, $elections)
 
         </div>
     </div>
-    <script src='../js/confirmation.js'></script>
 </body>
 
 </html>

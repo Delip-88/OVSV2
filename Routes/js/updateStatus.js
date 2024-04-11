@@ -42,7 +42,7 @@ function updateElectionStatus() {
         newStatus: newStatus,
       },
       success: function (response) {
-        console.log("Database updated successfully");
+        // console.log("Database updated successfully");
       },
       error: function (error) {
         console.error("Error updating database: " + error.responseText);
@@ -50,7 +50,6 @@ function updateElectionStatus() {
     });
   });
 }
-
 // Call the function when the document is ready or whenever needed
 $(document).ready(function () {
   updateElectionStatus();

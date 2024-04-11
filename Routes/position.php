@@ -52,7 +52,7 @@ if (!$result) {
                         $electionId = $row['Id'];
                         $electionTitle = $row['Title'];
                         $electionTitles[] = $electionTitle; // Add each election title to the array
-                        echo "<div class='eCard' data-title='{$row['Title']}'> ";
+                        echo "<div class='eCard' data-title='{$row['Title']}' data-status='{$row['Status']}' data-electionid='{$electionId}'> ";
                         echo "<h2>Election Title : {$row['Title']} </h2>";
                         echo "<p>Starting Date: <span class='stDate'>{$row['StartDate']} </span></p>";
                         echo "<p>Ending Date: <span class='endDate'>{$row['EndDate']} </span></p>";

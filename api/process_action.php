@@ -44,11 +44,6 @@ if (isset($_POST['accept'])) {
             // Delete the election record
             $election_delete_query = "DELETE FROM election WHERE Id = $user_id";
             if (mysqli_query($connect, $election_delete_query)) {
-                // Deletion of election record succeeded
-
-                // Delete votes associated with the election
-                $votes_delete_query = "DELETE FROM votes WHERE ElectionId = $electionId";
-                mysqli_query($connect, $votes_delete_query);
 
                 // Delete candidate images associated with the election
                 $queryImage = "SELECT Image FROM candidate WHERE Position = '$electionTitle'";

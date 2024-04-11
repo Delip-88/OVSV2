@@ -294,11 +294,6 @@ font-weight: 600;
    font-weight: bold;
  }
 
- .cardContainerCover h2 {
-   display: block;
-   width: 100%;
-   font-size: 25px;
- }
 
 
 h3{
@@ -313,8 +308,15 @@ h3{
    border-radius: 10px;
    flex-direction: column;
    border-bottom: 2px solid gray;
+   gap: 15px;
 
  }
+ .cardContainerCover h2 {
+  display: block;
+  width: 100%;
+  font-size: 25px;
+}
+
  .upcomingElection{
   width: 100%;
   display: flex;
