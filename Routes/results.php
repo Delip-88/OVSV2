@@ -40,11 +40,24 @@ $userdata = $_SESSION['userdata'];
         $eDate = $rowElection['StartDate'];
         $eId = $rowElection['Id'];
         
+        $queryCheckIfPublished = "SELECT * FROM results WHERE Election_Id = $eId";
+        $result = mysqli_query($connect, $queryCheckIfPublished);
+        
+        if ($result) {
+            if ($result->num_rows > 0) {
+                echo "<p class='published'>ALREADY PUBLISHED.</p>";
+            } else {
+                echo "<p class= 'notPublished'>NOT PUBLISHED YET.</p>";
+            }
+        } else {
+            echo "Error: Could not execute query. " . mysqli_error($connect);
+        }
+        
         echo "<span style='display:none'> Election Id:<span class='eId' > {$eId}</span></span>";
         echo "<span> Election Title: <span class='eTitle'>{$eTitle}</span></span>";
         echo "<span>  Election Date : <span class ='eDate'>{$eDate}</span></span>";
         echo "<h4>Candidates : </h4>";
-        // Count the number of candidates for the current election
+
         $queryCandidatesNames = "SELECT Full_Name FROM candidate WHERE Position = '{$eTitle}'";
         $resultCandidateNames = mysqli_query($connect, $queryCandidatesNames);
 
@@ -70,7 +83,7 @@ $userdata = $_SESSION['userdata'];
         if ($resultTotalVotes) {
             $totalVoteCount = mysqli_fetch_assoc($resultTotalVotes);
             $count = $totalVoteCount['totalVoteCount'];
-            echo "Total No Of Votes: {$count}";
+            echo "<p>Total No Of Votes: <span class='bold'>{$count}</span></p>";
         } else {
             echo "Error: " . mysqli_error($connect);
         }
@@ -102,7 +115,7 @@ $userdata = $_SESSION['userdata'];
                 echo "<tr>";
                 echo "<td>$sn</td>";
                 $sn++;
-                echo "<td data-imagepath='../uploads/{$row['CandidateImage']}'><img class='user-image' src='../uploads/{$row['CandidateImage']}'alt='User Image'></td>";
+                echo "<td data-imagepath='../uploads/{$row['CandidateImage']}'><img class='user-image' src='../uploads/{$row['CandidateImage']}'alt='User Image' onerror=\"this.src='../img/def.jpg'\"></td>";
                 echo "<td>{$row['CandidateName']}</td>";
                 echo "<td data-votecount='{$row['VoteCount']}'>{$row['VoteCount']}</td>";
                 echo "<td data-percentage='{$row['VotePercentage']}%'>{$row['VotePercentage']}%</td>";
@@ -121,11 +134,11 @@ $userdata = $_SESSION['userdata'];
 
             // Display winner(s)
             if (!empty($winners)) {
-                echo "<p>Winner(s): ";
+                echo "<p>Winner(s): <span class= 'bold'>";
                 foreach ($winners as $winner) {
-                    echo "{$winner['CandidateName']} ({$winner['VoteCount']} votes), ";
+                    echo "{$winner['CandidateName']} ({$winner['VoteCount']} votes),";
                 }
-                echo "</p>";
+                echo "</span></p>";
             } else {
                 echo "<p>No winner declared.</p>";
             }

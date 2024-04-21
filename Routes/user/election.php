@@ -97,7 +97,6 @@ function displayElectionSections($connect, $userId, $elections)
                 // Fetch election titles
                 $resultElection = fetchElections($connect, 'Ongoing');
                 while ($rowElection = mysqli_fetch_assoc($resultElection)) {
-                    // Display election title
                     $electionId = $rowElection['Id'];
 
                     // Fetching election title
@@ -125,7 +124,7 @@ function displayElectionSections($connect, $userId, $elections)
                         foreach ($candidatesArray as $rowCandidate) {
                             echo "<div class='eCard' data-election-id='{$electionId}' data-candidate-id='{$rowCandidate['Id']}'>";
                             echo "<div class='user-image'>";
-                            echo "<img src='../../uploads/{$rowCandidate['Image']}' alt='Candidate Image'>";
+                            echo "<img src='../../uploads/{$rowCandidate['Image']}' alt='Candidate Image' onerror=\"this.src='../../img/def.jpg'\">";
                             echo "</div>";
                             echo "<p>Full Name<br> <span class='username'>{$rowCandidate['Full_Name']}</span></p>";
                             echo "<p>Description:<br><span class='username'> {$rowCandidate['Description']}</span></p>";
@@ -171,6 +170,8 @@ function displayElectionSections($connect, $userId, $elections)
 
         </div>
     </div>
+<?php include '../components/_footer.php'; ?>
+
 </body>
 
 </html>

@@ -1,5 +1,4 @@
-<?php
-echo "
+
 <header>
       <h2 id='title'>Online Voting System</h2>
       <ul class='menu'>
@@ -18,5 +17,4 @@ echo "
     </div>
      
     </header>
-";
-?>
+

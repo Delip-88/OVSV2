@@ -67,7 +67,7 @@ if (!$result) {
                                 echo "<tr>";
                                 echo "<td>{$sn}</td>";
                                 $sn++;
-                                echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image'></td>";
+                                echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='User Image' onerror=\"this.src='../img/def.jpg'\"></td>";
                                 echo "<td>{$row['Full_Name']}</td>";
                                 echo "<td>{$row['Number']}</td>";
                                 echo "<td>{$row['Age']}</td>";

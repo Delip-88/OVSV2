@@ -40,7 +40,7 @@ $userdata = $_SESSION['userdata'];
             <i class="fa-solid fa-gear setting"></i>
 
             <figure class="userImage">
-                <img src="../../uploads/<?php echo $userdata['Image']; ?>" alt="userimage" srcset="">
+                <img src="../../uploads/<?php echo $userdata['Image']; ?>" alt="userimage" onerror="this.src='../../img/def.jpg'">
             </figure>
         </div>
         <div class="info">
@@ -71,6 +71,7 @@ $userdata = $_SESSION['userdata'];
             </div>
         </div>
     </main>
+<?php include '../components/_footer.php'; ?>
     <!-- POP-UP FORUM -->
     <div class="pop_box2">
         <h2>Edit</h2>

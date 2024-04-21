@@ -25,14 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Redirect after successful update
             echo "<script> 
             alert('Password Change sucessully!!');
-            window.location.href= '../Routes/userPart/personalInfo.php';
+            window.location.href= '../Routes/user/personalInfo.php';
             </script>";
             exit;
         } else {
             // Old password doesn't match
             echo "<script> 
             alert('Old Password Doesn\'t Match, Try Again !!');
-            window.location.href= '../Routes/userPart/personalInfo.php';
+            window.location.href= '../Routes/user/personalInfo.php';
             </script>";
             exit;
 
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // User not found or multiple users found (should not happen)
         echo "
         alert('User not found or multiple users found!');
-        window.location.href= '../Routes/userPart/personalInfo.php';
+        window.location.href= '../Routes/user/personalInfo.php';
         </script>";
         exit;
     }
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Invalid request method
     echo "<script> 
     alert('Invalid request method');
-    window.location.href= '../Routes/userPart/personalInfo.php';
+    window.location.href= '../Routes/user/personalInfo.php';
     </script>";
     exit;
 

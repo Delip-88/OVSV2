@@ -236,7 +236,9 @@ form button, .publishResult,.deleteResult,
   position: relative;
   z-index: 10;
 }
-
+.bold{
+  font-weight: 800;
+}
 .accept,
 .more,
 #btnC, #applyChangesBtn, .submit {
@@ -629,6 +631,17 @@ main{
   color: white;
   width: 30px;
   aspect-ratio: 1/1;
+}
+.published ,.notPublished{
+  width: 100%;
+  text-align: center;
+  padding: 5px ;
+}
+.published{
+  background-color: rgba(226, 226, 37, 0.788);
+}
+.notPublished{
+  background-color: #00abe4;
 }
 
 .fa-x{

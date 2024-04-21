@@ -47,7 +47,7 @@ if ($userRole === "admin") {
 } elseif ($userRole === 'user') {
     $table = 'users';
     // Password hashing for user password
-    authenticateUser($table, $email, $password, "../Routes/userPart/personalInfo.php", true);
+    authenticateUser($table, $email, $password, "../Routes/user/personalInfo.php", true);
 }
 
 // Close the database connection

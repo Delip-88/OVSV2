@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $electionTitle = null;
     $electionDate = null;
     $candidates = null;
+    $publish = 1;
     $missingParameters = [];
 
     // Assign data from JSON and check for missing parameters
@@ -60,8 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare statements for inserting data and checking for existing data
-    $insertStmt = $connect->prepare("INSERT INTO results (Election_Id, Election_Title, Election_Date, Candidate_Name, Candidate_Votes, Percentage, Candidate_Image)
-                                    VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $insertStmt = $connect->prepare("INSERT INTO results (Election_Id, Election_Title, Election_Date, Candidate_Name, Candidate_Votes, Percentage, Candidate_Image, Published)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?,?)");
     $checkStmt = $connect->prepare("SELECT COUNT(*) FROM results WHERE Election_Id = ? AND Candidate_Name = ?");
 
     // Loop through each candidate and process
@@ -80,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // If the candidate does not exist, insert the data
         if ($count == 0) {
-            $insertStmt->bind_param("isssids", $electionId, $electionTitle, $electionDate, $candidateName, $voteCount, $percentage, $imagePath);
+            $insertStmt->bind_param("isssidsi", $electionId, $electionTitle, $electionDate, $candidateName, $voteCount, $percentage, $imagePath, $publish);
             $insertStmt->execute();
 
             // Check for errors

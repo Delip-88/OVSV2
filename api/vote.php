@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($rowCheckVote['count'] > 0) {
         // User has already voted in this election
-        header("Location: ../Routes/userPart/election.php?message=already_voted");
+        header("Location: ../Routes/user/election.php?message=already_voted");
         exit(); // Stop further execution
     } else {
         // Insert the vote into the 'votes' table
@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_bind_param($stmtInsertVote, 'iii', $userId, $electionId, $selectedCandidateId);
 
         if (mysqli_stmt_execute($stmtInsertVote)) {
-            header("Location: ../Routes/userPart/election.php?message=vote_recorded");
+            header("Location: ../Routes/user/election.php?message=vote_recorded");
             exit(); // Stop further execution
         } else {
-            header("Location: ../Routes/userPart/election.php?message=vote_error");
+            header("Location: ../Routes/user/election.php?message=vote_error");
             exit(); // Stop further execution
         }
     }
