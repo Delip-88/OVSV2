@@ -25,7 +25,8 @@ if (!$result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -37,26 +38,26 @@ if (!$result) {
 
         <nav>
             <div class="main">
-              <div class="addVoter">
-                <h3>Candidates </h3>
-                <input type="text" name="searchInput" id="searchInput2" placeholder="Search by Position">
-                <button class="more btn_more">Add Candidate</button>
-              </div>
+                <div class="addVoter">
+                    <h3>Candidates </h3>
+                    <input type="text" name="searchInput" id="searchInput2" placeholder="Search by Position">
+                    <button class="more btn_more">Add Candidate</button>
+                </div>
                 <hr>
                 <div class="table-container">
-                  <table>
-                    <thead>
-                      <tr>
-                      <th>SN</th>
-                      <th>Image</th>
-                      <th>Full Name</th>
-                      <th>Position</th>
-                      <th>Description</th>
-                      <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody id="userData">
-                    <?php
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SN</th>
+                                <th>Image</th>
+                                <th>Full Name</th>
+                                <th>Position</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userData">
+                            <?php
                     $sn= 1;
                     while ($row = mysqli_fetch_assoc($result)) {
                       echo "<tr>";
@@ -76,8 +77,8 @@ if (!$result) {
               ";
                     }
                     ?>
-                    </tbody>
-                  </table>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </nav>

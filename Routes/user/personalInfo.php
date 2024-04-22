@@ -21,19 +21,11 @@ $userdata = $_SESSION['userdata'];
 </head>
 
 <body>
+    <div class="mainContainer">
+
     <header>
         <h1>Online Voting System</h1>
-        <nav>
-            <ul>
-                <li><a href="" class='active'>Personal Info</a></li>
-                <li><a href="election.php">Elections</a></li>
-                <li><a href="results.php">Results</a></li>
-            </ul>
-            <div class='welcome'>
-                <h3><span id='user'><?php echo $userdata['Full_Name'] ?></span></h3>
-                <a href='../../api/logout.php' id='logout'>LogOut</a>
-            </div>
-        </nav>
+<?php include '../components/_nav.php' ?>
     </header>
     <main>
         <div class="profile">
@@ -103,6 +95,7 @@ $userdata = $_SESSION['userdata'];
 
     </div>
 
+    </div>
 
     <script src='../js/userScript.js'></script>
     <script src="../js/passwordValidation.js"></script>

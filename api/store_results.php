@@ -102,6 +102,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+    // Call the stored procedure to delete old records
+    $deleteOldRecordsQuery = "CALL DeleteOldRecords()";
+    mysqli_query($connect, $deleteOldRecordsQuery);
+
+    // Handle potential errors
+    if (mysqli_error($connect)) {
+        echo json_encode(array("success" => false, "message" => "Error deleting old records: " . mysqli_error($connect)));
+        exit();
+    }
+
     // Respond with success message
     echo json_encode(array("success" => true, "message" => "Election results stored successfully"));
 } else {

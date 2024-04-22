@@ -25,7 +25,8 @@ if (!$result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -78,7 +79,7 @@ if (!$result) {
                                         <form action='../api/process_action.php' method='post'>
                                             <input type='hidden' name='user_id' value='{$row['Id']}'>
                                             <input type='hidden' name='originating_page' value='voter'>
-                                            <button type='submit' name='reject' class='reject'>Delete</button>
+                                            <button type='submit' name='reject' class='reject' onclick='return confirm(\"Are you sure?\")'>Delete</button>
                                         </form>
                                     </td>";
                                 echo "</tr>";

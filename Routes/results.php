@@ -18,6 +18,7 @@ $userdata = $_SESSION['userdata'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
+    <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -31,7 +32,7 @@ $userdata = $_SESSION['userdata'];
             <h2>Election Results</h2>
             <hr>
             <section class='closedElections'>
-    <?php
+                <?php
     $queryElection = "SELECT * FROM election WHERE Status='Closed'";
     $resultElection = mysqli_query($connect, $queryElection);
     while ($rowElection = mysqli_fetch_assoc($resultElection)) {
@@ -160,7 +161,7 @@ $userdata = $_SESSION['userdata'];
         echo "</div>";
     }
     ?>
-</section>
+            </section>
 
 
         </main>
@@ -168,7 +169,7 @@ $userdata = $_SESSION['userdata'];
     </div>
     <script src="js/menu.js"></script>
     <script src="js/publishResults.js"></script>
-    
+
 
 </body>
 

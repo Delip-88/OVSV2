@@ -58,20 +58,11 @@ function displayElectionSections($connect, $userId, $elections)
 </head>
 
 <body>
+<div class="mainContainer">
 
     <header>
         <h1>Online Voting System</h1>
-        <nav>
-            <ul>
-                <li><a href="personalInfo.php">Personal Info</a></li>
-                <li><a href="" class='active'>Elections</a></li>
-                <li><a href="results.php">Results</a></li>
-            </ul>
-            <div class='welcome'>
-                <h3><span id='user'><?php echo $userdata['Full_Name'] ?></span></h3>
-                <a href='../../api/logout.php' id='logout'>LogOut</a>
-            </div>
-        </nav>
+        <?php include '../components/_nav.php' ?>
     </header>
     <div class="elections">
         <?php
@@ -171,6 +162,7 @@ function displayElectionSections($connect, $userId, $elections)
         </div>
     </div>
 <?php include '../components/_footer.php'; ?>
+</div>
 
 </body>
 

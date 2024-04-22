@@ -26,6 +26,7 @@ if (!$result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
+    <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
@@ -63,7 +64,7 @@ if (!$result) {
                                 <input type='hidden' name='eId' value='$electionId'>
                                 <input type='hidden' name='originating_page' value='election'>
                                 <div class='modifybtns'>
-                                <button type='submit' name='reject' class='reject delete'>Delete</button>
+                                <button type='submit' name='reject' class='reject delete' onclick='return confirm(\"Are you sure?\")'>Delete</button>
                                 </div>
                                 </form> ";
                         echo " <button name='edit' class='edit'> Edit </button> ";
