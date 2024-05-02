@@ -58,14 +58,16 @@ function displayElectionSections($connect, $userId, $elections)
 </head>
 
 <body>
-<div class="mainContainer">
+    <?php include '../components/_sidebar2.php'; ?>
 
-    <header>
-        <h1>Online Voting System</h1>
-        <?php include '../components/_nav.php' ?>
-    </header>
-    <div class="elections">
-        <?php
+    <div class="mainContainer">
+
+        <header>
+            <h1>Online Voting System</h1>
+            <?php include '../components/_nav.php' ?>
+        </header>
+        <div class="elections">
+            <?php
         // Check if there are upcoming elections
         if (hasUpcomingElections($connect)) {
             // Fetch upcoming elections
@@ -78,13 +80,13 @@ function displayElectionSections($connect, $userId, $elections)
         }
         ?>
 
-        <h3>Ongoing Elections : </h3>
-        <hr>
-        <div id="user-data" data-user-id="<?php echo $userdata['Id']; ?>"></div>
+            <h3>Ongoing Elections : </h3>
+            <hr>
+            <div id="user-data" data-user-id="<?php echo $userdata['Id']; ?>"></div>
 
-        <div class="main">
-            <div class="items">
-                <?php
+            <div class="main">
+                <div class="items">
+                    <?php
                 // Fetch election titles
                 $resultElection = fetchElections($connect, 'Ongoing');
                 while ($rowElection = mysqli_fetch_assoc($resultElection)) {
@@ -157,12 +159,13 @@ function displayElectionSections($connect, $userId, $elections)
                 mysqli_close($connect);
                 ?>
 
-            </div>
+                </div>
 
+            </div>
         </div>
+        <?php include '../components/_footer.php'; ?>
     </div>
-<?php include '../components/_footer.php'; ?>
-</div>
+    <script src="../js/sidebar.js"></script>
 
 </body>
 

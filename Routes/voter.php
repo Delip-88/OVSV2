@@ -100,10 +100,9 @@ if (!$result) {
                     placeholder="Enter your Full Name " />
                 <div class="messagejs namemsg"></div>
             </div>
-            <label for="dob">DOB :</label>
+            <label for="dob">DOB(AD) :</label>
             <input type="date" name="dob" id="dob" max="2010-01-01" required placeholder="Enter your date of birth" />
             <input type="hidden" name="age" id="age" readonly />
-            <input type="hidden" name="age" readonly>
             <div class="cover">
                 <input type="number" name="number" id="number" onkeyup="numberValid()" required
                     placeholder="Enter your phone number" />
@@ -131,7 +130,7 @@ if (!$result) {
         </form>
     </div>
     <script src="js/script.js"></script>
-    <script src="js/menu.js"></script>
+    <script src="js/sidebar.js"></script>
     <script src="js/registerValidation.js"></script>
     <script src="js/search.js"></script>
 

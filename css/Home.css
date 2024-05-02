@@ -167,6 +167,7 @@ ul span {
 
 #logout:hover {
   background-color: black;
+  color: var(--topic-color);
 }
 table {
   border-collapse: collapse;
@@ -585,7 +586,9 @@ main{
   align-items: center;
   flex-direction: column;
   border-radius: 10px;
-  aspect-ratio: 2/2.5;
+  gap: 10px;
+  width: fit-content;
+  height: auto;
 }
 
 .user-image {
@@ -628,16 +631,7 @@ main{
   transition: all 200ms ease;
   border-bottom: 1px solid var(--topic-color);
 }
-.fa-bars{
-  /* display: none; */
-  position: absolute;
-  top:11%;
-  left:3%;
-  cursor: pointer;
-  color: white;
-  width: 30px;
-  aspect-ratio: 1/1;
-}
+
 .published ,.notPublished{
   width: 100%;
   text-align: center;
@@ -650,49 +644,62 @@ main{
   background-color: #00abe4;
 }
 
-.fa-x{
-  /* display: none; */
-  position: absolute;
-  top: 3%;
-  left: 75%;
-  cursor: pointer;
-  color: white;
-  z-index: 10;
-  width: 20px;
-  aspect-ratio: 1/2;
 
-}
 .sidebar{
-  z-index: 2;
   display: flex;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  justify-content: space-between;
   flex-direction: column;
-  width: 200px;
-  background-color: var(--sample3);
-  display: none;
-  padding-top: 20%;
-  min-height: 200vh;
-  overflow: visible;
+  position: fixed;
+  top: 0%;
+  left: -180px;
+  padding-top: 10%;
+  height: 100vh;
+  z-index: 5;
+  background-color: #0a0a0a;
+  display: block;
+  overflow: hidden;
+  transition: all 300ms ease;
+  width: 180px;
 }
-ol{
-  list-style-type: decimal;
-}
-
 .sidebar li{
-  padding: 0;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.678);
-  transition-delay: 600ms;
-}
+  text-align: left;
+  margin-top: 10px;
+  transition: all 300ms ease;
+  border-bottom: 1px solid gray;
+  padding-left: 20px;
 
-.sidebar li a {
+}
+.sidebar li:first-child{
+  margin-top: 30px;
+}
+.sidebar li a{
+  transition: all 300ms ease;
   width: 100%;
-  line-height: 45px; 
-  font-size: 16px;
+  padding-bottom:25px;
 }
+.sidebar li a:hover{
+  transform: translateX(15px);
+}
+.fa-bars, .fa-x{
+  width: 28px;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: all 300ms ease;
 
+}
+.fa-bars{
+  position: absolute;
+  top: 8%;
+  left: 2%;
+}
+.fa-x{
+  margin-left: 70%;
+  margin-bottom: 25px;
+
+}
+.fa-x:hover, .fa-bars:hover{
+  transform: scale(1.1);
+}
 .inactive {
   background-color: rgb(255 255 0 / 76%);
 }
@@ -720,6 +727,10 @@ ol{
 
   #title {
     font-size: 20px;
+    margin-left: 20px;
+  }
+  .result{
+    font-size: small  ;
   }
 
   .accept,

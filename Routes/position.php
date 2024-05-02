@@ -133,7 +133,7 @@ if (!$result) {
     <script src="js/updateStatus.js"></script>
     <script src="js/script.js"></script>
     <script src="js/editElectionDetails.js"></script>
-    <script src="js/menu.js"></script>
+    <script src="js/sidebar.js"></script>
 
 </body>
 

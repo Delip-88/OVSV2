@@ -89,7 +89,7 @@ $userdata = $_SESSION['userdata'];
             echo "Error: " . mysqli_error($connect);
         }
 
-        echo "<h4>Vote Counts:</h4>";
+        echo "<h4>Details :</h4>";
         echo "<table border='1' id='resultTable'>";
         echo "<tr><th>SN</th><th>Image</th><th>Candidate Name</th><th>Vote Count</th><th>Vote Percentage</th></tr>";
 
@@ -139,7 +139,7 @@ $userdata = $_SESSION['userdata'];
                 foreach ($winners as $winner) {
                     echo "{$winner['CandidateName']} ({$winner['VoteCount']} votes),";
                 }
-                echo "</span></p>";
+                echo "</span></p><hr>";
             } else {
                 echo "<p>No winner declared.</p>";
             }
@@ -167,7 +167,7 @@ $userdata = $_SESSION['userdata'];
         </main>
 
     </div>
-    <script src="js/menu.js"></script>
+    <script src="js/sidebar.js"></script>
     <script src="js/publishResults.js"></script>
 
 

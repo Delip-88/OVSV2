@@ -25,17 +25,19 @@ include '../../api/connect.php';
 </head>
 
 <body>
-<div class="mainContainer">
+    <?php include '../components/_sidebar2.php'; ?>
 
-    <header>
-        <h1>Online Voting System</h1>
-        <?php include '../components/_nav.php' ?>
-    </header>
-    <section class='resultData'>
-        <h2>Election Results</h2>
-    <hr>
-    <section class='closedElections'>
-        <?php
+    <div class="mainContainer">
+
+        <header>
+            <h1>Online Voting System</h1>
+            <?php include '../components/_nav.php' ?>
+        </header>
+        <section class='resultData'>
+            <h2>Election Results</h2>
+            <hr>
+            <section class='closedElections'>
+                <?php
         // Query to get results for published elections
         $queryElection = "SELECT * FROM results WHERE Published='1' GROUP BY Election_Id ORDER BY Election_Title";
         $resultElection = mysqli_query($connect, $queryElection);
@@ -67,7 +69,7 @@ include '../../api/connect.php';
                 }
                 // Reset the result set to the beginning
                 mysqli_data_seek($resultCandidates, 0);
-                echo "<h4> Vote Cout : </h4>";
+                echo "<h4> Details : </h4>";
                 // Display candidate information table
                 echo "<table border='1' id='resultTable'>
                         <tr>
@@ -95,10 +97,11 @@ include '../../api/connect.php';
             echo "Error fetching results: " . mysqli_error($connect);
         }
         ?>
-    </section>
-    </section>
-<?php include '../components/_footer.php'; ?>
-</div>
+            </section>
+        </section>
+        <?php include '../components/_footer.php'; ?>
+    </div>
+    <script src="../js/sidebar.js"></script>
 
 </body>
 

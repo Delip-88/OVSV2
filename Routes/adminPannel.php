@@ -71,7 +71,7 @@ $userdata = $_SESSION['userdata'];
                             echo "<div class='userImage'>";
                             echo "<img src='../uploads/{$rowCandidates['Image']}' alt='Candidate Image' class='user-image' onerror=\"this.src='../img/def.jpg'\">";
                             echo "</div>";
-                            echo "<p>Name <strong>: " . $rowCandidates['Full_Name'] . "</strong></p>";
+                            echo "<strong>" . $rowCandidates['Full_Name'] . "</strong></p>";
 
                             //Vote count from vote db
                             $queryVoteCount = "SELECT COUNT(*) as count FROM votes WHERE ElectionId='{$rowElection['Id']}' AND CandidateId='{$rowCandidates['Id']}'";
@@ -94,7 +94,7 @@ $userdata = $_SESSION['userdata'];
             </div>
         </nav>
     </div>
-    <script src="js/menu.js"></script>
+    <script src="js/sidebar.js"></script>
 </body>
 
 </html>

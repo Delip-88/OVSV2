@@ -122,7 +122,7 @@ if (!$result) {
     </div>
 
     <script src="js/script.js"></script>
-    <script src="js/menu.js"></script>
+    <script src="js/sidebar.js"></script>
     <script src="js/search.js"></script>
 
 </body>
