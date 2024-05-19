@@ -19,7 +19,7 @@ $userdata = $_SESSION['userdata'];
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
     <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/jquery-3.7.1.min.js"></script>
 
 </head>
 
@@ -116,7 +116,7 @@ $userdata = $_SESSION['userdata'];
                 echo "<tr>";
                 echo "<td>$sn</td>";
                 $sn++;
-                echo "<td data-imagepath='../uploads/{$row['CandidateImage']}'><img class='user-image' src='../uploads/{$row['CandidateImage']}'alt='User Image' onerror=\"this.src='../img/def.jpg'\"></td>";
+                echo "<td data-imagepath='../uploads/Candidate-Image/{$row['CandidateImage']}'><img class='user-image' src='../uploads/Candidate-Image/{$row['CandidateImage']}'alt='User Image' onerror=\"this.src='../img/def.jpg'\"></td>";
                 echo "<td>{$row['CandidateName']}</td>";
                 echo "<td data-votecount='{$row['VoteCount']}'>{$row['VoteCount']}</td>";
                 echo "<td data-percentage='{$row['VotePercentage']}%'>{$row['VotePercentage']}%</td>";

@@ -26,7 +26,7 @@ if (!$result) {
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
     <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/jquery-3.7.1.min.js"></script>
 
 </head>
 
@@ -63,7 +63,7 @@ if (!$result) {
                       echo "<tr>";
                       echo "<td>{$sn}</td>";
                       $sn++;
-                      echo "<td><img class='user-image' src='../uploads/{$row['Image']}' alt='Image' onerror=\"this.src='../img/def.jpg'\"></td>";
+                      echo "<td><img class='user-image' src='../uploads/Candidate-Image/{$row['Image']}' alt='Image' onerror=\"this.src='../img/def.jpg'\"></td>";
                       echo " <td>{$row['Full_Name']}</td> ";
                       echo " <td>{$row['Position']}</td> ";
                       echo " <td>{$row['Description']}</td>";

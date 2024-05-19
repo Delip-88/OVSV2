@@ -69,7 +69,7 @@ $userdata = $_SESSION['userdata'];
                           while ($rowCandidates = mysqli_fetch_assoc($resultCandidates)) {
                             echo "<div class='candidateCard'>";
                             echo "<div class='userImage'>";
-                            echo "<img src='../uploads/{$rowCandidates['Image']}' alt='Candidate Image' class='user-image' onerror=\"this.src='../img/def.jpg'\">";
+                            echo "<img src='../uploads/Candidate-Image/{$rowCandidates['Image']}' alt='Candidate Image' class='user-image' onerror=\"this.src='../img/def.jpg'\">";
                             echo "</div>";
                             echo "<strong>" . $rowCandidates['Full_Name'] . "</strong></p>";
 

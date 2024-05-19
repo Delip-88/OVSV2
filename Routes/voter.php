@@ -26,7 +26,7 @@ if (!$result) {
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
     <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/jquery-3.7.1.min.js"></script>
 
 </head>
 
@@ -57,7 +57,7 @@ if (!$result) {
                                 <th>Age</th>
                                 <th>Email</th>
                                 <th>Address</th>
-                                <th>Role</th>
+                                <!-- <th>Role</th> -->
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -74,7 +74,7 @@ if (!$result) {
                                 echo "<td>{$row['Age']}</td>";
                                 echo "<td>{$row['Email']}</td>";
                                 echo "<td>{$row['Address']}</td>";
-                                echo "<td>{$row['Role']}</td>";
+                                // echo "<td>{$row['Role']}</td>";
                                 echo "<td>
                                         <form action='../api/process_action.php' method='post'>
                                             <input type='hidden' name='user_id' value='{$row['Id']}'>

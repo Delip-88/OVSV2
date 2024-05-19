@@ -34,7 +34,7 @@ include '../../api/connect.php';
             <?php include '../components/_nav.php' ?>
         </header>
         <section class='resultData'>
-            <h2>Election Results</h2>
+            <h3>Election Results</h3>
             <hr>
             <section class='closedElections'>
                 <?php
@@ -63,13 +63,16 @@ include '../../api/connect.php';
                 }
                 
                 echo "</ol>";
-                $winner = mysqli_fetch_assoc($resultCandidates);
-                if($winner){
-                    echo "Winner : <span class='bold'> {$winner['Candidate_Name']} ({$winner['Candidate_Votes']} votes) </span>"; 
-                }
+
                 // Reset the result set to the beginning
                 mysqli_data_seek($resultCandidates, 0);
                 echo "<h4> Details : </h4>";
+                $queryWinner = "SELECT * FROM results WHERE Election_Id = {$rowElection['Election_Id']} AND Published = '1' ORDER BY Position ASC LIMIT 1";
+                $resultWinner = mysqli_query($connect,$queryWinner);
+                if($rowWinner =mysqli_fetch_assoc($resultWinner)){
+                    echo "<span class= 'flex'>Winner: <p class='winner'> " . $rowWinner['Candidate_Name'] . " ( " . $rowWinner['Candidate_Votes'] . " Votes )</p></span>";
+                }
+                echo "<hr>";
                 // Display candidate information table
                 echo "<table border='1' id='resultTable'>
                         <tr>
@@ -83,7 +86,7 @@ include '../../api/connect.php';
                 while ($candidateRow = mysqli_fetch_assoc($resultCandidates)) {
                     echo "<tr>";
                     echo "<td>{$candidateRow['Position']}</td>";
-                    echo "<td><img src='../../uploads/{$candidateRow['Candidate_Image']}' class='user-image' onerror=\"this.src='../../img/def.jpg'\"/></td>";
+                    echo "<td><img src='../{$candidateRow['Candidate_Image']}' class='user-image' onerror=\"this.src='../../img/def.jpg'\"/></td>";
                     echo "<td>{$candidateRow['Candidate_Name']}</td>";
                     echo "<td>{$candidateRow['Candidate_Votes']}</td>";
                     echo "<td>{$candidateRow['Percentage']} %</td>";

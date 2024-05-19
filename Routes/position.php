@@ -27,7 +27,8 @@ if (!$result) {
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
     <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+
 </head>
 
 <body>

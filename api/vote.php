@@ -34,9 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Close the prepared statements
-    mysqli_stmt_close($stmtCheckVote);
-    mysqli_stmt_close($stmtInsertVote);
 }
 
 // Close the database connection

@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $des = $_POST['description'];
 
     if (!empty($img)) {
-        move_uploaded_file($tmp_name, "../uploads/$img");
+        move_uploaded_file($tmp_name, "../uploads/Candidate-Image/$img");
 
         // Use prepared statement to prevent SQL injection
         $insert = mysqli_prepare($connect, "INSERT INTO candidate(Full_Name, Position, Image, Description) VALUES(?, ?, ?, ?)");
