@@ -56,6 +56,8 @@ body {
   overflow-x: hidden;
   background-color: rgb(0, 16, 37);
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -328,8 +330,49 @@ form {
   font-weight: bold;
 }
 
+#feedback_btn{
+  margin-left: auto;
+  font-size: large;
+  background-color: var(--topic-color);
+  color: white;
+  position:static;
+}
+.feedback_container{
+  width: 500px;
+  display: none;
+}
+.feedback_container h3{
+  color:  var(--topic-color);
+  font-size: 30px;
+}
+.feedback_container #feedback_submit,.feedback_container .btn_cancel2{
+  width: auto;
+  cursor: pointer;
+  transition: all ease 250ms;
+}
+#feedback_submit{
+  padding: 7 11px;
+  border-radius: 5px;
+  background-color: rgb(23, 173, 23);
+  color: white;
+  font-size: 14px;
+  transition: all 100ms ease;
+}
+#feedback_submit:focus{
+  background-color: rgb(19, 143, 19);
+}
+#feedback_btn:hover{
+  background-color:  rgb(2, 66, 139);
 
-
+}
+#feedback{
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding: 7px;
+  font-size: 18px;
+  font-style: italic;
+}
 h3 {
   font-size: 22px;
   padding-top: 10px;
@@ -624,8 +667,6 @@ td .user-image {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   margin-top: 20px;
   background-color: rgb(0 11 22 / 75%);
@@ -665,6 +706,7 @@ footer {
   min-height: 100vh;
   position: relative;
   padding-bottom: 10%;
+  flex: 1;
 }
 
 .links {
@@ -680,6 +722,9 @@ ul li:hover i {
   color: var(--topic-color);
 }
 
+.underline{
+  width: 100px;
+}
 .sidebar {
   display: flex;
   justify-content: space-between;
@@ -780,9 +825,15 @@ table th{
   }
 
   .wrapper .user-image {
-    width: 50px;
+    width: 80px;
   }
-
+  .eInfo{
+    font-size: small;
+  }
+  footer{
+    font-size: small;
+    flex-wrap: wrap;
+  }
 }
 
 @media only screen and (max-width:600px) {
@@ -816,7 +867,7 @@ table th{
   }
 
   .user-image {
-    width: 80px;
+    width: 60px;
   }
 
   main {

@@ -126,6 +126,7 @@ if (!$result) {
 
 
 
+    <?php include "components/_footer_admin.php" ?>
 
     <!-- Output the array as a JSON object in a script tag -->
     <script>

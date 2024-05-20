@@ -120,6 +120,7 @@ if (!$result) {
             </div>
         </form>
     </div>
+    <?php include "components/_footer_admin.php" ?>
 
     <script src="js/script.js"></script>
     <script src="js/sidebar.js"></script>

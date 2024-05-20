@@ -163,8 +163,8 @@ function displayElectionSections($connect, $userId, $elections)
 
             </div>
         </div>
-        <?php include '../components/_footer.php'; ?>
     </div>
+    <?php include '../components/_footer.php'; ?>
     <script src="../js/sidebar.js"></script>
 
 </body>

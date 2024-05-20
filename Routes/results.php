@@ -167,6 +167,8 @@ $userdata = $_SESSION['userdata'];
         </main>
 
     </div>
+    <?php include "components/_footer_admin.php" ?>
+
     <script src="js/sidebar.js"></script>
     <script src="js/publishResults.js"></script>
 

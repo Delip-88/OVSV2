@@ -1,4 +1,5 @@
 <?php
+include '../../api/connect.php';
 $timeout = 30 * 24 * 60 * 60;
 session_set_cookie_params($timeout);
 session_start();
@@ -10,7 +11,8 @@ if (!isset($_SESSION['userdata']) || $_SESSION['userdata']['Role'] !== 'user') {
 }
 
 $userdata = $_SESSION['userdata'];
-include '../../api/connect.php';
+$userId = $userdata['Id'];
+$userName = $userdata['Full_Name'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +46,7 @@ include '../../api/connect.php';
         
         if ($resultElection) {
             while ($rowElection = mysqli_fetch_assoc($resultElection)) {
+                $eId = $rowElection['Election_Id'];
                 echo "<div class='wrapper'>";
                 echo "<span> Election Title: <span class='eTitle'>{$rowElection['Election_Title']}</span></span>";
                 echo "<p> Election Date: <span class='stDate'>{$rowElection['Election_Date']}</span></p>";
@@ -94,17 +97,40 @@ include '../../api/connect.php';
                 }
                 
                 echo "</table>";
+                echo "<button id='feedback_btn' class='setting'>Feedback</button>";
                 echo "</div>";
+                ?>
+                <div class="feedback_container pop_box2">
+                    <h3>Feedback</h3>
+                    <hr>
+                    <form action="../../api/feedback.php" method="post">
+                        <input type="hidden" name="eid" value='<?php echo $eId; ?>'>
+                        <input type="hidden" name="uid" value='<?php echo $userId; ?>'>
+                        <input type="hidden" name="user_name" value='<?php echo $userName; ?>'>
+                        <input type="hidden" name="etitle" value='<?php echo $rowElection['Election_Title']; ?>'>
+                        <textarea rows='4' placeholder='thank you..' cols='' name="feedback" id="feedback"
+                            required></textarea>
+                        <input type="submit" value="submit" id='feedback_submit'
+                            onclick="return confirm('Are you Sure?');">
+                        <input type="reset" class='btn_cancel2' value="Cancel">
+
+                    </form>
+                </div>
+                <?php
+                
             }
         } else {
             echo "Error fetching results: " . mysqli_error($connect);
         }
         ?>
+
             </section>
         </section>
-        <?php include '../components/_footer.php'; ?>
     </div>
+    <?php include '../components/_footer.php'; ?>
+
     <script src="../js/sidebar.js"></script>
+    <script src="../js/userScript.js"></script>
 
 </body>
 

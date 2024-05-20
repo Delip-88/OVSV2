@@ -15,8 +15,7 @@ function authenticateUser($table, $email, $password, $redirectLocation)
     mysqli_stmt_bind_param($stmt, 's', $email);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    echo $email;
-    echo $password;
+
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
             // Check if the provided password matches the hashed password

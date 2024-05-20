@@ -72,7 +72,6 @@ if (!$result) {
                                 echo "<td>{$row['Age']}</td>";
                                 echo "<td>{$row['Email']}</td>";
                                 echo "<td>{$row['Address']}</td>";
-                                // echo "<td>{$row['Role']}</td>";
                                 echo "<td>
                         <form action='../api/process_action.php' method='post' class='btns'>
                             <input type='hidden' name='user_id' value='{$row['Id']}'>
@@ -90,6 +89,7 @@ if (!$result) {
             </div>
         </nav>
     </div>
+    <?php include "components/_footer_admin.php" ?>
 
     <script src="js/script.js"></script>
     <script src="js/sidebar.js"></script>

@@ -94,6 +94,7 @@ $userdata = $_SESSION['userdata'];
             </div>
         </nav>
     </div>
+    <?php include "components/_footer_admin.php" ?>
     <script src="js/sidebar.js"></script>
 </body>
 

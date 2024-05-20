@@ -65,7 +65,6 @@ $userdata = $_SESSION['userdata'];
                 </div>
             </div>
         </main>
-        <?php include '../components/_footer.php'; ?>
         <!-- POP-UP FORUM -->
         <div class="pop_box2">
             <h2>Edit</h2>
@@ -98,6 +97,7 @@ $userdata = $_SESSION['userdata'];
         </div>
 
     </div>
+    <?php include '../components/_footer.php'; ?>
 
     <script src='../js/userScript.js'></script>
     <script src="../js/passwordValidation.js"></script>

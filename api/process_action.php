@@ -40,6 +40,20 @@ if (isset($_POST['accept'])) {
         case 'candidate':
             deleteImageAndRow($connect, $user_id, 'candidate', "../uploads/Candidate-Image/", "../Routes/candidate.php");
             break;
+        case 'feedback':
+            $queryDeleteFeedback = "DELETE FROM feedback WHERE Id = ?";
+            if ($stmt = mysqli_prepare($connect, $queryDeleteFeedback)) {
+                mysqli_stmt_bind_param($stmt, "i", $user_id);
+                if (mysqli_stmt_execute($stmt)) {
+                    header("Location: ../Routes/feedback.php");
+                } else {
+                    echo "Error Deleting Feedback: " . mysqli_error($connect);
+                }
+                mysqli_stmt_close($stmt);
+            } else {
+                echo "Failed to prepare statement: " . mysqli_error($connect);
+            }
+            break;
         case 'result':
             $queryDeleteVotes = "DELETE FROM votes WHERE ElectionId = $electionId";
             $queryDeleteElection = "DELETE FROM election WHERE Id = $electionId";
