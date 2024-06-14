@@ -258,6 +258,8 @@ form button, .publishResult,.deleteResult,
   color: white;
   font-size: 17px;
   transition: all 100ms ease;
+  min-height: 30px;
+  font-weight: 500;
 }
 
 #btnC {
@@ -302,8 +304,33 @@ form button, .publishResult,.deleteResult,
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
+
   display: none;
+  opacity: 0;
+  transition-property: overlay display opacity;
+  transition-duration: 700ms;
+  transition-behavior: allow-discrete;
+  translate:0 25vh;
 }
+
+/* .addmore::backdrop , .pop_box2::backdrop{
+  opacity: 0;
+  transition-property: overlay display opacity;
+  transition-duration: 700ms;
+  transition-behavior: allow-discrete;
+  translate:0 25vh;
+
+  background-image: linear-gradient(45deg,red,blue);
+}
+.visible::backdrop{
+  opacity: 0.75;
+
+}
+@starting-sytle{
+  .visible::backdrop{
+    opacity: 0;
+  }
+} */
 
 .info {
   width: 100%;
@@ -390,7 +417,12 @@ hr {
 }
 
 textarea {
+  padding-left: 15px;
   border-radius: 5px;
+}
+textarea:focus{
+  border: #00abe4;
+  outline: 1px solid var(--bgcolor);
 }
 
 .btns {
@@ -400,14 +432,18 @@ textarea {
   justify-content: center;
   margin: 10px auto;
 }
-textarea {
-  padding-left: 15px;
-}
 
 /* Style for the modal container */
 .visible {
   display: block;
+  opacity: 1;
+  translate: 0 0;
+  @starting-style{
+    opacity: 0;
+    translate:0 -25vh;
+  }
 }
+
 
 .cancel,
 .edit {
@@ -417,7 +453,9 @@ textarea {
   border-radius: 5px;
   cursor: pointer;
   transition: transform 100ms ease;
-  font-size: small;
+  font-size: 17px;
+  min-width: 75px;
+  font-weight: 500;
 }
 
 .cancel:hover {

@@ -148,7 +148,7 @@ $userdata = $_SESSION['userdata'];
         }
         echo "</table>";
         echo "<div class='btns'>";
-        echo "<button class='publishResult' onclick='return confirm(\"Are you sure?\")'> Publish Results </button> ";
+        echo "<button class='publishResult'>Publish Results</button>";
         echo "<form method='post' action='../api/process_action.php'>";
         echo "<input type='hidden' name='eId' value='{$eId}'>";
         echo "<input type='hidden' name='Title' value='{$eTitle}'>";

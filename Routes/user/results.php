@@ -69,6 +69,16 @@ $userName = $userdata['Full_Name'];
                     // Reset the result set to the beginning
                     mysqli_data_seek($resultCandidates, 0);
                     echo "<h4> Details : </h4>";
+                    $queryVoteCount = "SELECT COUNT(*) as totalVoteCount FROM votes WHERE ElectionId = '{$eId}'";
+                    $resultTotalVotes = mysqli_query($connect, $queryVoteCount);
+            
+                    if ($resultTotalVotes) {
+                        $totalVoteCount = mysqli_fetch_assoc($resultTotalVotes);
+                        $count = $totalVoteCount['totalVoteCount'];
+                        echo "<p>Total No Of Votes: <span class='bold'>{$count}</span></p>";
+                    } else {
+                        echo "Error: " . mysqli_error($connect);
+                    }
                     $queryWinner = "SELECT * FROM results WHERE Election_Id = {$rowElection['Election_Id']} AND Published = '1' ORDER BY Position ASC LIMIT 1";
                     $resultWinner = mysqli_query($connect, $queryWinner);
                     if ($rowWinner = mysqli_fetch_assoc($resultWinner)) {
