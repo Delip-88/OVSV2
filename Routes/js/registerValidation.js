@@ -53,26 +53,138 @@ function cpasswordValid() {
 function nameValid() {
   let message = document.querySelector(".namemsg");
   const fname = document.getElementById("name").value;
+
+  // Check length requirements
   if (fname.length < 4 || fname.length > 32) {
     message.innerHTML = "Name must be between 4 and 32 characters";
-  } else if (/\d/.test(fname)) {
+    return;
+  }
+
+  // Check for numbers
+  if (/\d/.test(fname)) {
     message.innerHTML = "Name shouldn't include numbers";
-  } else if (/[!@#$%^&*(),.?":{}|<>]/.test(fname)) {
+    return;
+  }
+
+  // Check for special characters
+  if (/[!@#$%^&*(),.?":{}|<>]/.test(fname)) {
     message.innerHTML = "Name shouldn't include special characters";
+    return;
+  }
+
+  // If all validations pass
+  message.innerHTML = "";
+}
+
+function dateValid() {
+  let message = document.querySelector(".datemsg");
+  const dateInput = document.getElementById("dob").value;
+
+  // Get the current date
+  const currentDate = new Date();
+  
+  // Parse the input date
+  const inputDate = new Date(dateInput);
+
+  // Check if the date is valid
+  if (isNaN(inputDate.getTime())) {
+    message.innerHTML = "Please enter a valid date";
+    return;
+  }
+
+  // Calculate the age
+  const age = currentDate.getFullYear() - inputDate.getFullYear();
+  const monthDifference = currentDate.getMonth() - inputDate.getMonth();
+  const dayDifference = currentDate.getDate() - inputDate.getDate();
+
+  // Adjust age if the birth date has not occurred yet this year
+  if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+    age--;
+  }
+
+  // Validate the age range
+  if (age < 12 || age > 90) {
+    message.innerHTML = "Age must be between 12 and 90 years";
   } else {
     message.innerHTML = "";
   }
 }
 
-function numberValid() {
-  let message = document.querySelector(".numbermsg");
-  const num = document.getElementById("number").value;
-  if (isNaN(num) || num.length !== 10) {
-    message.innerHTML = "Number must be 10 digits";
+
+function emailValid() {
+  let message = document.querySelector(".emailmsg");
+  const email = document.getElementById("email").value;
+
+  // Basic email pattern that does not start with a number
+  const emailPattern = /^[a-zA-Z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  // Validate the email address
+  if (!emailPattern.test(email)) {
+    message.innerHTML = "Please enter a valid email address";
   } else {
     message.innerHTML = "";
   }
 }
+
+function fileValid() {
+  let message = document.querySelector(".filemsg");
+  const fileInput = document.getElementById("image");
+  const file = fileInput.files[0]; // Get the file object
+  const filePath = fileInput.value;
+
+  // Allowed file extensions
+  const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+
+  // Validate the file extension
+  if (!allowedExtensions.exec(filePath)) {
+    message.innerHTML = "Only .jpg, .jpeg, and .png files are allowed";
+    fileInput.value = ""; // Clear the input value
+    return false;
+  }
+
+  // Validate the file size (1 MB = 1,048,576 bytes)
+  if (file && file.size > 1048576) {
+    message.innerHTML = "File size must be less than 1 MB";
+    fileInput.value = ""; // Clear the input value
+    return false;
+  }
+
+  // If all validations pass
+  message.innerHTML = "";
+  return true;
+}
+
+// Add an event listener to trigger validation on file change
+document.getElementById("image").addEventListener("change", fileValid);
+
+
+
+function numberValid() {
+  let message = document.querySelector(".numbermsg");
+  const num = document.getElementById("number").value;
+
+  // Check if the input is a number and has a length of 10
+  if (isNaN(num) || num.length !== 10) {
+    message.innerHTML = "Number must be 10 digits";
+    return;
+  }
+
+  // Check if the number starts with '9'
+  if (num[0] !== '9') {
+    message.innerHTML = "Number must start with '9'";
+    return;
+  }
+
+  // Check if all digits are the same
+  if (/^(\d)\1+$/.test(num)) {
+    message.innerHTML = "All numbers cannot be the same digit";
+    return;
+  }
+
+  // If all validations pass
+  message.innerHTML = "";
+}
+
 
 //Submit prevention
 const btnSubmit = document.getElementById("submit");

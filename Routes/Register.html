@@ -23,7 +23,8 @@
       </div>
       <div class="cover">
         <label for="dob">DOB :</label>
-        <input type="date" name="dob" id="dob" max="2010-01-01" required placeholder="Enter your date of birth" />
+        <input type="date" name="dob" id="dob" max="2010-01-01" onkeyup="dateValid()" required placeholder="Enter your date of birth" />
+        <div class="messagejs datemsg"></div>
         <input type="hidden" name="age" id="age" readonly />
       </div>
 
@@ -44,7 +45,8 @@
         <div class="messagejs cpasswordmsg"></div>
       </div>
       <div class="cover">
-        <input type="email" name="email" id="email" required placeholder="Enter your email" />
+        <input type="email" name="email" id="email" onkeyup="emailValid()" required placeholder="Enter your email" />
+        <div class="messagejs emailmsg"></div>
       </div>
       <div class="cover">
         <input type="text" name="address" id="address" required placeholder="Enter your address" />
@@ -52,6 +54,7 @@
       <div class="cover">
         <label for="image">Your Passport Size Photo :</label>
         <input type="file" name="image" id="image" class="uploadImage" accept=".jpg, .jpeg, .png" required />
+        <div class="messagejs filemsg"></div>
       </div>
       <button type="submit" id="submit">Submit</button>
     </form>

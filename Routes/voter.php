@@ -26,7 +26,7 @@ if (!$result) {
     <title>SecureVote - Online Voting Platform</title>
     <link rel="stylesheet" href="../css/Home.css" />
     <script src="https://kit.fontawesome.com/192f9dadc6.js" crossorigin="anonymous"></script>
-        <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
 
 </head>
 
@@ -100,9 +100,13 @@ if (!$result) {
                     placeholder="Enter your Full Name " />
                 <div class="messagejs namemsg"></div>
             </div>
-            <label for="dob">DOB(AD) :</label>
-            <input type="date" name="dob" id="dob" max="2010-01-01" required placeholder="Enter your date of birth" />
-            <input type="hidden" name="age" id="age" readonly />
+            <div class="cover">
+                <label for="dob">DOB :</label>
+                <input type="date" name="dob" id="dob" max="2010-01-01" onkeyup="dateValid()" required
+                    placeholder="Enter your date of birth" />
+                <div class="messagejs datemsg"></div>
+                <input type="hidden" name="age" id="age" readonly />
+            </div>
             <div class="cover">
                 <input type="number" name="number" id="number" onkeyup="numberValid()" required
                     placeholder="Enter your phone number" />
@@ -114,13 +118,20 @@ if (!$result) {
                     placeholder="Enter new password" />
                 <div class="messagejs passwordmsg"></div>
             </div>
+            <div class="cover">
+                <input type="email" name="email" id="email" onkeyup="emailValid()" required
+                    placeholder="Enter your email" />
+                <div class="messagejs emailmsg"></div>
 
-            <input type="email" name="email" id="email" required placeholder="Enter your email" />
+            </div>
 
             <input type="text" name="address" id="address" required placeholder="Enter your address" />
             <br>
-            <label for="image">Your Passport Size Photo :</label>
-            <input type="file" name="image" id="image" class="uploadImage" accept=".jpg, .jpeg, .png" required />
+            <div class="cover">
+                <label for="image">Your Passport Size Photo :</label>
+                <input type="file" name="image" id="image" class="uploadImage" accept=".jpg, .jpeg, .png" required />
+                <div class="messagejs filemsg"></div>
+            </div>
             <div class="btns">
                 <button type="submit" id="submit" class="submit">Submit</button>
                 <button type="reset" class="cancel btn_cancel">Cancel</button>
